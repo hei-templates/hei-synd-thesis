@@ -182,9 +182,9 @@
 //-------------------------------------
 // Heading shift
 //
-#let unshift_prefix(prefix, content) = style((s) => {
-    pad(left: -measure(prefix, s).width, prefix + content)
-  })
+#let unshift_prefix(prefix, content) = context {
+  pad(left: -measure(prefix).width, prefix + content)
+}
 
 //-------------------------------------
 // Research

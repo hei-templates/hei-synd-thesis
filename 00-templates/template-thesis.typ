@@ -99,12 +99,11 @@
   )
 
   // header and footer
-  set page(
-    header: locate(loc => if loc.page() >=2 [
+    header: context(if here().page() >=2 [
     #set text(small)
       #h(1fr) #smallcaps(title)
     ]),
-    footer: locate(loc => if loc.page() >=2 [
+    footer: context(if here().page() >=2 [
       #set text(small)
       #h(1fr) #counter(page).display("1 / 1", both: true)
     ]),
@@ -120,7 +119,7 @@
     lang:lang
   )
   // paragraph
-  show par: set block(spacing: 1em)
+  show par: set par(spacing: 1em)
   //set par(leading: 0.55em, first-line-indent: 1.8em, justify: true)
 
   // heading
@@ -152,8 +151,6 @@
     }
   }
 
-  //show heading.where(level: 1): set text(size:huge)
-  //show heading.where(level: 1): set pad(size:huge)
 
   // link color
   //show link: it => text(fill:blue, underline(it))
