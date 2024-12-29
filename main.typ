@@ -3,6 +3,8 @@
 //
 #import "00-templates/template-thesis.typ": *
 #import "01-settings/metadata.typ": *
+#import "03-tail/glossary.typ": *
+#register-glossary(entry-list)
 
 //-------------------------------------
 // Template config
@@ -164,9 +166,13 @@
 //
 #pagebreak()
 = Glossary <sec:glossary>
-#add-chapter(
-  "/03-tail/glossary.typ",
-  heading-offset: 0,
+#print-glossary(
+  entry-list,
+  // show all term even if they are not referenced, default to true
+  show-all: false,
+  // disable the back ref at the end of the descriptions
+  disable-back-references: false,
+  
 )
 
 

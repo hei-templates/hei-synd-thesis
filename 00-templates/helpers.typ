@@ -11,7 +11,7 @@
 // External Plugins
 #import "@preview/codelst:2.0.1": sourcecode
 #import "@preview/tablex:0.0.8" : *
-#import "@preview/glossarium:0.4.2": *
+#import "@preview/glossarium:0.5.1": *
 #show: make-glossary
 
 #let myref(label) = locate(loc =>{
