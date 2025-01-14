@@ -1,7 +1,5 @@
 <h1 align="center">
-  <br>
   <img src="./04-resources/logos/hei-en.svg" alt="HEI Logo Logo" width="300" height="200">
-  <br>
   <img src="./04-resources/logos/synd-light.svg" alt="HEI Logo Logo" width="300" height="200">
   <br>
   HEI-Vs Engineering School - Typst Thesis Template
@@ -152,7 +150,7 @@ choco install git.install
 
 [![Read Guide to Typst](https://img.shields.io/badge/Read-Guide_to_Typst-blue)](https://github.com/hei-templates/hei-typst-thesis/blob/master/guite-to-typst.pdf) [![Download Guide to Typst](https://img.shields.io/badge/Download-Guide_to_Typst-brightgreen)](https://github.com/hei-templates/hei-typst-thesis/raw/master/guide-to-typst.pdf)
 
-[![Read Guide to Thesis](https://img.shields.io/badge/Read-Guide_to_Typst-blue)](https://github.com/hei-templates/hei-typst-thesis/blob/master/guite-to-thesis.pdf) [![Download Guide to Thesis](https://img.shields.io/badge/Download-Guide_to_Typst-brightgreen)](https://github.com/hei-templates/hei-typst-thesis/raw/master/guide-to-thesis.pdf)
+[![Read Guide to Thesis](https://img.shields.io/badge/Read-Guide_to_Thesis-blue)](https://github.com/hei-templates/hei-typst-thesis/blob/master/guite-to-thesis.pdf) [![Download Guide to Thesis](https://img.shields.io/badge/Download-Guide_to_Thesis-brightgreen)](https://github.com/hei-templates/hei-typst-thesis/raw/master/guide-to-thesis.pdf)
 
 ## Credits
 
