@@ -66,8 +66,8 @@
 // Resources
 #let icons-folder      = "/00-templates/icons/"
 #let resources-folder  = "/04-resources/"
-#let icon              = resources-folder + "icon.svg"
 #let placeholder       = resources-folder + "placeholder.svg"
+#let icon              = resources-folder + "icon.svg"
 #let icon-check-badge  = icons-folder + "check-badge.svg"
 #let icon-check-circle = icons-folder + "check-circle.svg"
 #let icon-check-square = icons-folder + "check-square.svg"

@@ -1,13 +1,12 @@
 <h1 align="center">
   <br>
   <img src="./04-resources/logos/hei-en.svg" alt="HEI Logo Logo" width="300" height="200">
+  <br>
   <img src="./04-resources/logos/synd-light.svg" alt="HEI Logo Logo" width="300" height="200">
   <br>
   HEI-Vs Engineering School - Typst Thesis Template
   <br>
 </h1>
-
-[![Read Template](https://img.shields.io/badge/Read-Template-blue)](https://github.com/tschinz/hevs-typsttemplate-thesis/blob/master/05-pdf/thesis.pdf) [![Download Template](https://img.shields.io/badge/Download-Template-brightgreen)](https://github.com/tschinz/hevs-typsttemplate-thesis/raw/master/05-pdf/thesis.pdf)
 
 A Typst template for the HES-SO//Valais Wallis Bachelor thesis.
 
@@ -24,20 +23,26 @@ A Typst template for the HES-SO//Valais Wallis Bachelor thesis.
   <a href="#find-us-on">Find us on</a>
 </p>
 
+<p align="center"><img src="./thumbnail.png" alt="Typst Logo" width="350"></p>
+
 ## Features
 
 [(Back to top)](#table-of-contents)
 
 * Title page with official layout
-* Table of contents, Table of figures, Table of tables, Table of listings
+* Table of contents, Table of figures, Table of tables, Table of listings, Table of equations
 * Abstract
 * Nice title styles for chapter and appendices
 * Chapter table of contents (minitoc)
-* Bibliography
+* Acronyms
 * Glossary
+* Bibliography
 * Code highlighting
 * Nice default typography settings
 * Custom Boxes
+* Word Counters
+
+![](sample.svg)
 
 ## Getting started
 
@@ -45,7 +50,7 @@ A Typst template for the HES-SO//Valais Wallis Bachelor thesis.
 
 ### Installation
 
-This document is made for typst v0.11.0.
+This document is made for typst v0.12.0.
 
 #### MacOS
 
@@ -104,14 +109,13 @@ choco install git.install
 
 ### How to use
 
-1. Modify variables in `01-settings/metadata.typ`
-
-2. Write your thesis there are plugins for VS-Code and Sublimetext available
-
+1. Read the [![Guide to Thesis](https://img.shields.io/badge/Read-Template-blue)](https://github.com/hei-templates/hei-typst-thesis/blob/master/guide-to-thesis.pdf) and [![Guide to Typst](https://img.shields.io/badge/Read-Template-blue)](https://github.com/hei-templates/hei-typst-thesis/blob/master/guide-to-typst.pdf)
+2. Modify variables in `01-settings/metadata.typ`
+2. Write your thesis there are plugins for Zed, VS-Code and Sublimetext available
 3. Use the given justfile or typst directly to build the PDF
-   
+
    With the justfile
-   
+
    ```bash
    just
    Available recipes:
@@ -122,11 +126,11 @@ choco install git.install
     open file_name=doc_name    # open pdf
     pdf file_name=doc_name     # build, rename and copy a typ file to a pdf
     pdf-all file_name=doc_name # build, rename and copy a typ file in all variants
-    watch file_name=doc_name   # watch a typ file for continuous incremental build   ```
+    watch file_name=doc_name   # watch a typ file for continuous incremental build
    ```
-   
+
    With typst directly
-   
+
    ```bash
    typst c main.typ             # compiles thesis to main.pdf
    typst w main.typ             # watches all documents and incrementally compiles to main.pdf
@@ -136,33 +140,34 @@ choco install git.install
 
    [(Back to top)](#table-of-contents)
 
-1. Take a look at the [issues](https://github.com/tschinz/hevs-typsttemplate-thesis/issues) issues with the "Help wanted" tag
-
-2. Choose something or open a new [issue](https://github.com/tschinz/hevs-typsttemplate-thesis/issues)
-
+1. Take a look at the [issues](https://github.com/hei-templates/hei-typst-thesis/issues) issues with the "Help wanted" tag
+2. Choose something or open a new [issue](https://github.com/hei-templates/hei-typst-thesis/issues)
 3. Fork the repo, fix the problem in a branch
-
 4. Rebase your branch if needed
-
-5. Submit a [pull request](https://github.com/tschinz/hevs-typsttemplate-thesis/pulls)
+5. Submit a [pull request](https://github.com/hei-templates/hei-typst-thesis/pulls)
 
 ## Help
 
 [(Back to top)](#table-of-contents)
 
-[![Read Guide to Typst](https://img.shields.io/badge/Read-Guide_to_Typst-blue)](https://github.com/tschinz/hevs-typsttemplate-thesis/blob/master/guide-to-typst.pdf) [![Download Guide to Typst](https://img.shields.io/badge/Download-Guide_to_Typst-brightgreen)](https://github.com/tschinz/hevs-typsttemplate-thesis/raw/master/guide-to-typst.pdf)
+[![Read Guide to Typst](https://img.shields.io/badge/Read-Guide_to_Typst-blue)](https://github.com/hei-templates/hei-typst-thesis/blob/master/guite-to-typst.pdf) [![Download Guide to Typst](https://img.shields.io/badge/Download-Guide_to_Typst-brightgreen)](https://github.com/hei-templates/hei-typst-thesis/raw/master/guide-to-typst.pdf)
+
+[![Read Guide to Thesis](https://img.shields.io/badge/Read-Guide_to_Typst-blue)](https://github.com/hei-templates/hei-typst-thesis/blob/master/guite-to-thesis.pdf) [![Download Guide to Thesis](https://img.shields.io/badge/Download-Guide_to_Typst-brightgreen)](https://github.com/hei-templates/hei-typst-thesis/raw/master/guide-to-thesis.pdf)
+
 ## Credits
 
 [(Back to top)](#table-of-contents)
 
-* All guys from Typst
-* Silvan Zahno
+* All guys from [Typst](https://github.com/typst/typst)
+* [Silvan Zahno](https://github.com/tschinz)
+* [Rémi Heredero](https://github.com/Klagarge)
+* [Louis Heredero](https://github.com/LordBaryhobal)
 
 ## Find us on
 
 [(Back to top)](#table-of-contents)
 
-* Webpage [hevs.ch](https://www.hevs.ch/synd)
+* Webpage [hevs.ch](https://synd.hevs.io)
 * LinkedIn [HEI Valais-Wallis](https://www.linkedin.com/showcase/school-of-engineering-valais-wallis/)
 * Youtube [HES-SO Valais-Wallis](https://www.youtube.com/user/HESSOVS/)
 * Twitter [@hessovalais](https://twitter.com/hessovalais)

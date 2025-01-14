@@ -1,20 +1,9 @@
 //-----------------------------------------------------------------------------
-// Glossary
+// Glossary with Glossarium
 //
-
-// HEADER
 #import "/00-templates/helpers.typ": *
+
 #let entry-list = (
-  (
-    key: "ar",
-    short: "AR",
-    long: "Augmented Reality",
-  ),
-  (
-    key: "scrum",
-    short: "Scrum",
-    description: [Scrum is an agile process framework for managing complex knowledge work, with an initial emphasis on software development, although it has been used in other fields and is slowly starting to be explored for other complex work, research and advanced technologies.],
-  ),
   (
     key: "hei",
     short: "HEI",
@@ -23,16 +12,53 @@
   ),
   (
     key: "synd",
-    short: "Systems Engineering",
+    short: "SYND",
+    long: "Systems Engineering",
     group: "University"
+  ),
+  (
+    key: "it",
+    short: "IT",
+    long: "Infotronics",
+    group: "University"
+  ),
+  (
+    key: "fpga",
+    short: "FPGA",
+    plural: "FPGAs",
+    long: "Field Programmable Gate Array",
+    longplural: "Field Programmable Gate Arrays",
+    description: "A field-programmable gate array (FPGA) is an integrated circuit designed to be configured by a customer or a designer after manufacturing – hence the term 'field-programmable'.",
+    group: "Technology"
   ),
 )
 
-#print-glossary(
-  entry-list,
-  // show all term even if they are not referenced, default to true
-  show-all: false,
-  // disable the back ref at the end of the descriptions
-  disable-back-references: false,
-  
-)
+
+
+#let make_glossary(
+  gloss:true,
+  title: i18n("gloss-title"),
+) = {[
+  #if gloss == true {[
+    #pagebreak()
+    #set heading(numbering: none)
+    = #title <sec:glossary>
+    #print-glossary(
+      entry-list,
+      // show all term even if they are not referenced, default to true
+      show-all: false,
+      // disable the back ref at the end of the descriptions
+      disable-back-references: false,
+    )
+  ]} else{[
+    #set text(size: 0pt)
+    #title <sec:glossary>
+    #print-glossary(
+      entry-list,
+      // show all term even if they are not referenced, default to true
+      show-all: false,
+      // disable the back ref at the end of the descriptions
+      disable-back-references: false,
+    )
+  ]}
+]}

@@ -2,7 +2,7 @@
 // Description: Creating nice looking item list with different icons
 // Author     : Silvan Zahno
 //
-#import "constants.typ": *
+#import "/00-templates/constants.typ": *
 
 #let item-list(
   content: none,
@@ -22,6 +22,26 @@
   }
 }
 
+#let item-circle(
+  content: none,
+  height: normal,
+) = {
+  item-list(
+    content: content,
+    height: height,
+    icon: icon-circle,
+  )
+}
+#let item-square(
+  content: none,
+  height: normal,
+) = {
+  item-list(
+    content: content,
+    height: height,
+    icon: icon-square,
+  )
+}
 #let item-checkbadge(
   content: none,
   height: normal,
@@ -70,6 +90,16 @@
     content: content,
     height: height,
     icon: icon-circle,
+  )
+}
+#let item-square(
+  content: none,
+  height: normal,
+) = {
+  item-list(
+    content: content,
+    height: height,
+    icon: icon-square,
   )
 }
 #let item-file(

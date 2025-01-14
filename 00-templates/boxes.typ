@@ -2,8 +2,41 @@
 // Description: Creating nice looking information boxes with different logos
 // Author     : Silvan Zahno
 //
-#import "constants.typ": *
+#import "/00-templates/constants.typ": *
+#import "/01-settings/metadata.typ": *
 
+//-------------------------------------
+// Option Style
+//
+#let option_style(
+  type: none,
+  size: small,
+  style: "italic",
+  fill: gray-40,
+  body) = {[
+  #if type == none {
+    text(size:size, style:style, fill:fill)[#body]
+  } else {
+    if option.type == type {text(size:size, style:style, fill:fill)[#body]}
+  }
+]}
+
+//-------------------------------------
+// Todo Box
+//
+#let todo(body) = [
+  #let rblock = block.with(stroke: red, radius: 0.5em, fill: red.lighten(80%))
+  #let top-left = place.with(top + left, dx: 1em, dy: -0.35em)
+  #block(inset: (top: 0.35em), {
+    rblock(width: 100%, inset: 1em, body)
+    top-left(rblock(fill: white, outset: 0.25em, text(fill: red)[*TODO*]))
+  })
+  <todo>
+]
+
+//-------------------------------------
+// Icon Boxes
+//
 #let iconbox(
   width: 100%,
   radius: 4pt,
@@ -211,8 +244,8 @@
 #let slantedBackground(
   color: black, body) = {
   set text(fill: white, weight: "bold")
-  style(styles => {
-    let size = measure(body, styles)
+  context {
+    let size = measure(body)
     let inset = 8pt
     [#block()[
       #polygon(
@@ -224,7 +257,7 @@
       )
       #place(center + top, dy: size.height, dx: -3pt)[#body]
     ]]
-  })
+  }
 }
 
 #let slantedColorbox(

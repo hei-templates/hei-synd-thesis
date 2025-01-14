@@ -13,7 +13,7 @@ project_dir   := justfile_directory()
 project_name  := file_stem(justfile_directory())
 
 typst_version := "typst -V"
-typst_github  := "https://github.com/typst/typst typst-cli --tag v0.11.0"
+typst_github  := "https://github.com/typst/typst typst-cli --tag v0.12.0"
 
 output_dir    := "05-pdf"
 doc_name      := "main"

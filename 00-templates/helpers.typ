@@ -6,14 +6,65 @@
 #import "/00-templates/boxes.typ": *
 #import "/00-templates/constants.typ": *
 #import "/00-templates/items.typ": *
+#import "/00-templates/karnaugh.typ": *
+#import "/00-templates/sections.typ": *
 #import "/01-settings/metadata.typ": *
 
 // External Plugins
-#import "@preview/codelst:2.0.1": sourcecode
-#import "@preview/tablex:0.0.8" : *
+// Fancy pretty print with line numbers and stuff
+#import "@preview/codelst:2.0.2": sourcecode
+// Glossarium for glossary
 #import "@preview/glossarium:0.5.1": *
-#show: make-glossary
+// Tablex for legacy tables use standard tables for new ones
+#import "@preview/tablex:0.0.9" : *
+// Wordometer for word and character count
+#import "@preview/wordometer:0.1.4": word-count
 
+//-------------------------------------
+// Internationalization
+//
+#let i18n(
+  key,
+  extra-i18n: none) = {
+  let lang = option.lang
+  if type(extra-i18n) == dictionary {
+    for (lng, keys) in extra-i18n {
+      if not lng in langs {
+        langs.insert(lng, (:))
+      }
+      langs.at(lng) += keys
+    }
+  }
+  if not lang in langs {
+    lang = "en"
+  }
+  let keys = langs.at(lang)
+  assert(
+    key in keys,
+    message: "I18n key " + str(key) + " doesn't exist"
+  )
+  return keys.at(key)
+}
+
+#let getSupplement(
+  it
+) = {
+    let f = it.func()
+    if (f == image) {
+      i18n("figure-name")
+    } else if (f == table) {
+      i18n("table-name")
+    } else if (f == raw) {
+      i18n("listing-name")
+      } else if (f == math.equation) {
+      i18n("equation-name")
+    } else {
+      auto
+    }
+  }
+//-------------------------------------
+// Reference helper function
+//
 #let myref(label) = locate(loc =>{
     if query(label,loc).len() != 0 {
         ref(label)
@@ -54,55 +105,50 @@
   }
 }
 
-
 //-------------------------------------
 // Table of content
 //
 #let toc(
-  lang: "en",
   tableof: (
     toc: true,
-    minitoc : false,
     tof: false,
     tot: false,
     tol: false,
     toe: false,
   ),
+  titles: (
+    toc: i18n("toc-title"),
+    tof: i18n("tof-title"),
+    tot: i18n("tot-title"),
+    tol: i18n("tol-title"),
+    toe: i18n("toe-title"),
+  ),
   before: none,
   indent: true,
-  depth: depth-max,
+  depth: tableof.maxdepth,
 ) = {
   // Table of content
-  if tableof.toc == true {
-    let title = [#if lang == "de" {
-      "Inhalt"
-    } else if lang == "fr" {
-      "Contenu"
-    } else {
-        "Contents"
-    }]
-
-    if before != none {
-      outline(
-        title: title,
-        target: selector(heading).before(before, inclusive: true),
-        indent: indent,
-        depth: depth,
-      )
-    } else {
-      outline(
-        title: title,
-        indent: indent,
-        depth: depth,
-      )
+    if tableof.toc == true {
+      if before != none {
+        outline(
+          title: titles.toc,
+          target: selector(heading).before(before, inclusive: true),
+          indent: indent,
+          depth: depth,
+        )
+      } else {
+        outline(
+          title: titles.toc,
+          indent: indent,
+          depth: depth,
+        )
+      }
     }
-
-  }
 
   // Table of figures
   if tableof.tof == true {
     outline(
-      title: [#if lang == "de" {"Abbildungen"} else if lang == "fr" {"Figures"} else {"Figures"}],
+      title: titles.tof,
       target: figure.where(kind: image),
       indent: indent,
       depth: depth,
@@ -112,7 +158,7 @@
   // Table of tables
   if tableof.tot == true {
     outline(
-      title: [#if lang == "de" {[Tabellen]} else if lang == "fr" {[Tables]} else {[Tables]}],
+      title: titles.tot,
       target: figure.where(kind: table),
       indent: indent,
       depth: depth,
@@ -122,7 +168,7 @@
   // Table of listings
   if tableof.tol == true {
     outline(
-      title: [#if lang == "de" {"Programme"} else if lang == "fr" {"Programmes"} else {"Listings"}],
+      title: titles.tol,
       target: figure.where(kind: raw),
       indent: indent,
       depth: depth,
@@ -132,7 +178,7 @@
   // Table of equation
   if tableof.toe == true {
     outline(
-      title: [#if lang == "de" {"Gleichungen"} else if lang == "fr" {"Équations"} else {"Equations"}],
+      title: titles.toe,
       target: math.equation.where(block:true),
       indent: indent,
       depth: depth,
@@ -140,48 +186,47 @@
   }
 }
 
-
 #let minitoc(
   after: none,
   before: none,
   addline: true,
   stroke: 0.5pt,
   length: 100%,
-  depth: depth-max,
+  depth: tableof.maxdepth,
+  title: i18n("toc-title"),
   indent: false,
 ) = {
   v(2em)
-  text(large, [*Contents*])
+  text(large, weight: "bold", title)
   if addline == true {
     line(length:length, stroke:stroke)
   }
   let h = selector(heading.where(level: 2))
-    .or(heading.where(level: 3))
-    .or(heading.where(level: 4))
-    .or(heading.where(level: 5))
-    .or(heading.where(level: 6))
-    .or(heading.where(level: 7))
-    .or(heading.where(level: 8))
-    .or(heading.where(level: 9))
-    .or(heading.where(level: 10))
-
+      .or(heading.where(level: 3))
+      .or(heading.where(level: 4))
+      .or(heading.where(level: 5))
+      .or(heading.where(level: 6))
+      .or(heading.where(level: 7))
+      .or(heading.where(level: 8))
+      .or(heading.where(level: 9))
+      .or(heading.where(level: 10))
   outline(
-    
     title: none,
     target: selector(h)
       .after(after)
       .before(before, inclusive: false),
-    depth: depth,
-    indent: indent,
+      depth: depth,
+      indent: indent,
   )
   if addline == true {
     line(length:length, stroke:stroke)
   }
 }
 
-//-------------------------------------
+//--------------------------------------
 // Heading shift
 //
+// #unshift_prefix[Prefix][Body]
 #let unshift_prefix(prefix, content) = context {
   pad(left: -measure(prefix).width, prefix + content)
 }
@@ -320,115 +365,29 @@
 }
 
 //-------------------------------------
-// Counter
-//
-#let word_counter_init() = {[
-  #show regex("\b\w+\b"): it => counter("words").step() + it
-]}
-#let word_count(preamble:"Word count:") = {[
-  #preamble #counter("words").display()
-]}
-
-#let char_counter_init() = {
-  show regex(".+"): it => counter("chars").step() + it
-}
-#let char_count(preamble:"Char count:") = {[
-  #preamble #counter("chars").display()
-]}
-
-//-------------------------------------
-// Option Style
-//
-#let option_style(
-  type: "draft",
-  size: small,
-  style: "italic",
-  fill: gray-40,
-  body) = {[
-  #if option.type == type {text(size:size, style:style, fill:fill)[#body]
-  }
-]}
-
-
-#let todo(body) = [
-  #let rblock = block.with(stroke: red, radius: 0.5em, fill: red.lighten(80%))
-  #let top-left = place.with(top + left, dx: 1em, dy: -0.35em)
-  #block(inset: (top: 0.35em), {
-    rblock(width: 100%, inset: 1em, body)
-    top-left(rblock(fill: white, outset: 0.25em, text(fill: red)[*TODO*]))
-  })
-  <todo>
-]
-
-
-//-------------------------------------
-// Titlebox
-//
-#let titlebox(
-  width: 100%,
-  radius: 4pt,
-  border: 1pt,
-  inset: 20pt,
-  outset: -10pt,
-  linecolor: box-border,
-  titlesize: huge,
-  subtitlesize: larger,
-  title: [],
-  subtitle: none,
-) = {
-    if title != [] {
-    align(center,
-      rect(
-        stroke: (left:linecolor+border, top:linecolor+border, rest:linecolor+(border+1pt)),
-        radius: radius,
-        outset: (left:outset, right:outset),
-        inset: (left:inset*2, top:inset, right:inset*2, bottom:inset),
-        width: width)[
-          #align(center,
-            [
-              #if subtitle != none {
-                [#text(titlesize, title) \ \ #text(subtitlesize, subtitle)]
-              } else {
-                text(titlesize, title)
-              }
-            ]
-          )
-        ]
-      )
-    }
-}
-
-//-------------------------------------
-// Part
-//
-#let part(
-  title: [],
-  number: 1,
-  size: huge,
-) = {
-  pagebreak()
-  v(1fr)
-  align(center, smallcaps(text(size, [Part #number])))
-  v(2em)
-  align(center, smallcaps(text(size, title)))
-  v(1fr)
-  pagebreak()
-}
-
-//-------------------------------------
 // Chapter
 //
-#let add-chapter(
-  file,
-  heading-offset: 0,
+#let add_chapter(
+  file: none,
+  heading_offset: 0,
   after: none,
   before: none,
+  pb: false,
+  minitoc_title: i18n("toc-title"),
+  body
 ) = [
   #if (after != none and before != none) {
-    minitoc(after:after, before:before, indent: true)
-    pagebreak()
+    minitoc(title: minitoc_title, after:after, before:before, indent: true)
+    if pb {
+      pagebreak()
+    }
   }
-  #set heading(offset: heading-offset)
-  #include file
+  #set heading(offset: heading_offset)
+
+  #if (file != none) {
+    include file
+  } else {
+    body
+  }
   #set heading(offset: 0)
 ]
