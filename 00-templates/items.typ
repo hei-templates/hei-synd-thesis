@@ -5,150 +5,137 @@
 #import "/00-templates/constants.typ": *
 
 #let item-list(
-  content: none,
   height: normal,
   icon: icon-check-square,
+  body
 ) = {
-  if content != none {
+  if body != none {
     v(-9pt)
     table(
       stroke: none,
       columns: 2,
       align: left+horizon,
       column-gutter: -2pt,
-      image(icon, height:normal), content
+      image(icon, height:normal), body
     )
     v(-9pt)
   }
 }
 
 #let item-circle(
-  content: none,
   height: normal,
+  body
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-circle,
-  )
+  )[#body]
 }
 #let item-square(
-  content: none,
   height: normal,
+  body
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-square,
-  )
+  )[#body]
 }
 #let item-checkbadge(
-  content: none,
   height: normal,
+  body
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-check-badge,
-  )
+  )[#body]
 }
 #let item-checkcircle(
-  content: none,
   height: normal,
+  body,
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-check-circle,
-  )
+  )[#body]
 }
 #let item-checksquare(
-  content: none,
   height: normal,
+  body
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-check-square,
-  )
+  )[#body]
 }
 #let item-check(
-  content: none,
   height: normal,
+  body
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-check,
-  )
+  )[#body]
 }
 #let item-circle(
-  content: none,
   height: normal,
+  body
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-circle,
-  )
+  )[#body]
 }
 #let item-square(
-  content: none,
   height: normal,
+  body
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-square,
-  )
+  )[#body]
 }
 #let item-file(
-  content: none,
   height: normal,
+  body
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-file,
-  )
+  )[#body]
 }
 #let item-folder(
-  content: none,
   height: normal,
+  body
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-folder,
-  )
+  )[#body]
 }
 #let item-xcircle(
-  content: none,
   height: normal,
+  body
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-x-circle,
-  )
+  )[#body]
 }
 #let item-xsquare(
-  content: none,
   height: normal,
+  body
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-x-square,
-  )
+  )[#body]
 }
 #let item-x(
-  content: none,
   height: normal,
+  body
 ) = {
   item-list(
-    content: content,
     height: height,
     icon: icon-x,
-  )
+  )[#body]
 }

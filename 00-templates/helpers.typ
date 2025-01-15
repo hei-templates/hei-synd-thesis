@@ -115,6 +115,7 @@
     tot: false,
     tol: false,
     toe: false,
+    maxdepth: 3,
   ),
   titles: (
     toc: i18n("toc-title"),
@@ -125,7 +126,6 @@
   ),
   before: none,
   indent: true,
-  depth: tableof.maxdepth,
 ) = {
   // Table of content
     if tableof.toc == true {
@@ -134,13 +134,13 @@
           title: titles.toc,
           target: selector(heading).before(before, inclusive: true),
           indent: indent,
-          depth: depth,
+          depth: tableof.maxdepth,
         )
       } else {
         outline(
           title: titles.toc,
           indent: indent,
-          depth: depth,
+          depth: tableof.maxdepth,
         )
       }
     }
@@ -151,7 +151,7 @@
       title: titles.tof,
       target: figure.where(kind: image),
       indent: indent,
-      depth: depth,
+      depth: tableof.maxdepth,
     )
   }
 
@@ -161,7 +161,7 @@
       title: titles.tot,
       target: figure.where(kind: table),
       indent: indent,
-      depth: depth,
+      depth: tableof.maxdepth,
     )
   }
 
@@ -171,7 +171,7 @@
       title: titles.tol,
       target: figure.where(kind: raw),
       indent: indent,
-      depth: depth,
+      depth: tableof.maxdepth,
     )
   }
 
@@ -181,7 +181,7 @@
       title: titles.toe,
       target: math.equation.where(block:true),
       indent: indent,
-      depth: depth,
+      depth: tableof.maxdepth,
     )
   }
 }
