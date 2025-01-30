@@ -4,7 +4,7 @@
 
 #lorem(50)
 
-#add_chapter(
+#add-chapter(
   after:<sec:impl>,
   before:<sec:validation>
 )[

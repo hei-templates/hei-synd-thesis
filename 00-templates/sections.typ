@@ -54,12 +54,12 @@
     }
 }
 
-#let exam_header(
-  nbrEx: 5+1,
+#let exam-header(
+  nbr-ex: 5+1,
   pts: 10,
   lang: "en" // "de" "fr"
 ) = {
-  if nbrEx == 0 {
+  if nbr-ex == 0 {
     table(
       columns: (2cm, 90%),
       align: center + top,
@@ -68,7 +68,7 @@
       },
       [#line(start: (0cm, 0.7cm), length:(100%), stroke:(dash:"loosely-dashed"))],
     )
-  } else if nbrEx == 1 {
+  } else if nbr-ex == 1 {
     table(
       columns: (2cm, 90%-1.3cm, 1.3cm),
       align: center + top,
@@ -79,7 +79,7 @@
       [#line(start: (0cm, 0.7cm), length:(100%), stroke:(dash:"loosely-dashed"))],
       [#v(-0.3cm)#rect(height:1cm, width:1.2cm, stroke:2pt)],
     )
-  } else if nbrEx == 2 {
+  } else if nbr-ex == 2 {
     table(
       columns: (2cm, 90%-2.3cm, 1cm, 1.3cm),
       align: center + top,
@@ -92,7 +92,7 @@
       [#v(-0.3cm)#rect(height:1cm, width:1.2cm, stroke:2pt)],
       [], [], [#v(-0.2cm)#text(small, [(#pts)])], [],
     )
-  } else if nbrEx == 3 {
+  } else if nbr-ex == 3 {
     table(
       columns: (2cm, 90%-3.3cm, 1cm, 1cm, 1.3cm),
       align: center + top,
@@ -106,7 +106,7 @@
       [#v(-0.3cm)#rect(height:1cm, width:1.2cm, stroke:2pt)],
       [], [], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [],
     )
-  } else if nbrEx == 4 {
+  } else if nbr-ex == 4 {
     table(
       columns: (2cm, 90%-4.3cm, 1cm, 1cm, 1cm, 1.3cm),
       align: center + top,
@@ -121,7 +121,7 @@
       [#v(-0.3cm)#rect(height:1cm, width:1.2cm, stroke:2pt)],
       [], [], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [],
     )
-  } else if nbrEx == 5 {
+  } else if nbr-ex == 5 {
     table(
       columns: (2cm, 90%-5.3cm, 1cm, 1cm, 1cm, 1cm, 1.3cm),
       align: center + top,
@@ -137,7 +137,7 @@
       [#v(-0.3cm)#rect(height:1cm, width:1.2cm, stroke:2pt)],
       [], [], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [],
     )
-  } else if nbrEx == 6 {
+  } else if nbr-ex == 6 {
     table(
       columns: (2cm, 90%-6.3cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1.3cm),
       align: center + top,
@@ -154,7 +154,7 @@
       [#v(-0.3cm)#rect(height:1cm, width:1.2cm, stroke:2pt)],
       [], [], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [],
     )
-  } else if nbrEx == 7 {
+  } else if nbr-ex == 7 {
     table(
       columns: (2cm, 90%-7.3cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1.3cm),
       align: center + top,
@@ -172,7 +172,7 @@
       [#v(-0.3cm)#rect(height:1cm, width:1.2cm, stroke:2pt)],
       [], [], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [],
     )
-  } else if nbrEx == 8 {
+  } else if nbr-ex == 8 {
     table(
       columns: (2cm, 90%-8.3cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1.3cm),
       align: center + top,
@@ -191,7 +191,7 @@
       [#v(-0.3cm)#rect(height:1cm, width:1.2cm, stroke:2pt)],
       [], [], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [],
     )
-  } else if nbrEx == 9 {
+  } else if nbr-ex == 9 {
     table(
       columns: (2cm, 90%-9.3cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1.3cm),
       align: center + top,
@@ -211,7 +211,7 @@
       [#v(-0.3cm)#rect(height:1cm, width:1.2cm, stroke:2pt)],
       [], [], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [#v(-0.2cm)#text(small, [(#pts)])], [],
     )
-  } else if nbrEx == 10 {
+  } else if nbr-ex == 10 {
     table(
       columns: (2cm, 90%-10.3cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1cm, 1.3cm),
       align: center + top,
@@ -240,11 +240,11 @@
   } else if lang == "de" {
     [#text(large, "Name:")]
   }
-  line(start: (2cm, 0cm), length:(80%-nbrEx*5%), stroke:(dash:"loosely-dashed"))
-  if nbrEx != 0 {
+  line(start: (2cm, 0cm), length:(80%-nbr-ex*5%), stroke:(dash:"loosely-dashed"))
+  if nbr-ex != 0 {
     let i = 0
-    while i <= nbrEx {
-      if i == nbrEx {
+    while i <= nbr-ex {
+      if i == nbr-ex {
         square(size:1.3cm, stroke:2pt)
       } else {
         square(size:1cm, stroke:1pt)
@@ -254,7 +254,7 @@
   }*/
 }
 
-#let exam_reminder_did(
+#let exam-reminder-did(
   lang: "en" // "de" "fr",
 ) = {
   if lang == "en" {
@@ -293,7 +293,7 @@
   }
 }
 
-#let exam_reminder_car(
+#let exam-reminder-car(
   lang: "en" // "de" "fr",
 ) = {
   if lang == "en" {
@@ -332,7 +332,7 @@
   }
 }
 
-#let exam_reminder_syd(
+#let exam-reminder-syd(
   lang: "en" // "de" "fr",
 ) = {
   if lang == "en" {
@@ -372,7 +372,7 @@
   }
 }
 
-#let exercises_solution_hints(
+#let exercises-solution-hints(
   lang: "en" // "de" "fr",
 ) = {
   if lang == "en" {

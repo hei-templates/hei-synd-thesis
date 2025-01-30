@@ -97,7 +97,7 @@
     if it.numbering != none {
       let num = numbering(it.numbering, ..counter(heading).at(it.location()))
       let prefix = num + h(0.5em) + text(code-border)[|] + h(0.5em)
-      unshift_prefix(prefix, it.body)
+      unshift-prefix(prefix, it.body)
     } else {
       it
     }
@@ -106,7 +106,7 @@
   show heading.where(level: 2): (it) => {
     if it.numbering != none {
       let num = numbering(it.numbering, ..counter(heading).at(it.location()))
-      unshift_prefix(num + h(0.8em), it.body)
+      unshift-prefix(num + h(0.8em), it.body)
     }
   }
 

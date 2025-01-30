@@ -12,7 +12,7 @@
 
 #v(2em)
 _*Keywords*_:
-#enumerating_items(
+#enumerating-items(
   items: doc.keywords,
   italic: true
 )

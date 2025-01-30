@@ -102,7 +102,7 @@
     // AUTHORs
     align(center, [#text(size:large, [
       #if type(author) == array [
-        #enumerating_authors(
+        #enumerating-authors(
           items: author,
           multiline: true,
         )
@@ -187,9 +187,9 @@
         align: left + horizon,
         [
           #if address != none {
-            option_style()[#address]
+            option-style()[#address]
           } else {[
-            #option_style()[HES-SO Valais Wallis • rue de l'Industrie 23 • 1950 Sion \ +41 58 606 85 11 • #link("mailto"+"info@hevs.ch")[info\@hevs.ch] • #link("www.hevs.ch")[www.hevs.ch]]
+            #option-style()[HES-SO Valais Wallis • rue de l'Industrie 23 • 1950 Sion \ +41 58 606 85 11 • #link("mailto"+"info@hevs.ch")[info\@hevs.ch] • #link("www.hevs.ch")[www.hevs.ch]]
           ]}
         ],[
           #image("/04-resources/logos/swissuniversities.svg", width: 3.3cm)
