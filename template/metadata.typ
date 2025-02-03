@@ -103,7 +103,7 @@
   },
   topright: image("/resources/img/logos/hesso-logo.svg", width: 4cm),
   bottomleft: image("/resources/img/logos/hevs-pictogram.svg", width: 4cm),
-  bottomright: image("/resources/img/logos/swiss_universities-equal_salary-valais-excellence-logo.svg", width: 7cm),
+  bottomright: image("/resources/img/logos/swiss_universities-valais-excellence-logo.svg", width: 5cm),
   )
 )
 

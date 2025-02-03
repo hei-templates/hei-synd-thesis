@@ -118,6 +118,7 @@ typst watch thesis.typ
 - [x] Table of tables
 - [x] Table of listings
 - [x] Table of equations
+- [x] Todo Boxes with Table of Todos in draft mode
 - [x] Custom Boxes
 - [x] Sourcecode with codelst
 - [x] Glossary and Acronyms with Glossarium
