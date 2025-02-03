@@ -192,7 +192,7 @@
     ]),
     footer: context( if here().page() >=2 [
       #set text(small)
-      #h(1fr) #counter(page).display("1 / 1", both: true)
+      #h(1fr) #counter(page).display("I / 1", both: false)
     ]),
   )
 
@@ -329,6 +329,17 @@
 
   // Main body
   set par(justify: true)
+  set page(
+    header: context(if here().page() >=2 [
+    #set text(small)
+      #h(1fr) #smallcaps(doc.title)
+    ]),
+    footer: context( if here().page() >=2 [
+      #set text(small)
+      #h(1fr) #counter(page).display("1 / 1", both: true)
+    ]),
+  )
+  counter(page).update(1)
 
   body
 }
