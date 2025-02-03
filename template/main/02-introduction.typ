@@ -109,6 +109,7 @@ Highlight key points with these fun boxes (and more):
   [ #rocketbox()[Rocketbox: Shoot for the moon!] ],
   [ #todobox()[Todobox: Just do it!] ],
   )
+  #todo[Personnal todo before marking this thesis as final]
 
 == Citations, Acronyms and Glossary
 

@@ -221,6 +221,41 @@
   }
 }
 
+#let outline-todos(title: [TODOS]) = context {
+  heading(numbering: none, outlined: false, title)
+
+  let queried-todos = query(<todo>)
+  let headings = ()
+  let last-heading
+  for todo in queried-todos {
+    let new-last-heading = query(selector(heading).before(todo.location())).last()
+    if last-heading != new-last-heading {
+      headings.push((heading: new-last-heading, todos: (todo,)))
+       last-heading = new-last-heading
+    } else {
+      headings.last().todos.push(todo)
+    }
+  }
+
+  for head in headings {
+    link(head.heading.location())[
+      #if head.heading.at("numbering", default: none) != none {
+        numbering(head.heading.numbering, ..counter(heading).at(head.heading.location()))
+      }
+      #head.heading.body
+    ]
+    [ ]
+    box(width: 1fr, repeat[.])
+    [ ]
+    [#head.heading.location().page()]
+
+    linebreak()
+    pad(left: 1em, head.todos.map((todo) => {
+      list.item(link(todo.location(), todo.body.children.at(0).body))
+    }).join())
+  }
+}
+
 //--------------------------------------
 // Heading shift
 //
