@@ -228,6 +228,8 @@
     if it.numbering != none {
       let num = numbering(it.numbering, ..counter(heading).at(it.location()))
       unshift-prefix(num + h(0.8em), it.body)
+    } else {
+      it
     }
   }
 
