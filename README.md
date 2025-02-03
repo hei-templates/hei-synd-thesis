@@ -3,14 +3,14 @@
 
 <h1 align="center">
   <br>
-  <img src="https://github.com/hei-templates/hei-synd-thesis/blob/51e8aea5b38bb51cba041bfc0ab769cc12f1a865/img/hei-en.svg" alt="HEI-Vs Logo" width="350">
+  <img src="https://github.com/hei-templates/hei-synd-logos/blob/5a15ff1e95e012e53c34580554a4834cdec05d01/hei-en.svg" alt="HEI-Vs Logo" width="350">
   <br>
   HEI-Vs Engineering School - Systems Engineering
   <br>
 </h1>
 <div align="center">
   <br>
-  <img src="https://github.com/hei-templates/hei-synd-report/blob/51e8aea5b38bb51cba041bfc0ab769cc12f1a865/img/synd-light.svg" alt="Industrial Systems Logo" width="350">
+  <img src="https://github.com/hei-templates/hei-synd-logos/blob/5a15ff1e95e012e53c34580554a4834cdec05d01/synd.svg" alt="Industrial Systems Logo" width="350">
   <br>
 </div>
 
