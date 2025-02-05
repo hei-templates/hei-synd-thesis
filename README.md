@@ -1,5 +1,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/hei-templates/hei-synd-thesis)
 ![GitHub Release](https://img.shields.io/github/v/release/hei-templates/hei-synd-thesis)
+![Telemetry Visitor Count](https://app-tianji.msgbyte.com/telemetry/cm64lizd7hzwj12yac9ppg3tv/cm6rhef9lu6up12ya6gzskk5d/badge.svg)
+![](https://app-tianji.msgbyte.com/telemetry/cm64lizd7hzwj12yac9ppg3tv/cm6rhef9lu6up12ya6gzskk5d.gif)
 
 <h1 align="center">
   <br>
