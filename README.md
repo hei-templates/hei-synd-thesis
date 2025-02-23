@@ -1,7 +1,6 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/hei-templates/hei-synd-thesis)
 ![GitHub Release](https://img.shields.io/github/v/release/hei-templates/hei-synd-thesis)
-![Telemetry Visitor Count](https://app-tianji.msgbyte.com/telemetry/cm64lizd7hzwj12yac9ppg3tv/cm6rhef9lu6up12ya6gzskk5d/badge.svg?url=https://github.com/hei-templates/hei-synd-thesis)
-![](https://app-tianji.msgbyte.com/telemetry/cm64lizd7hzwj12yac9ppg3tv/cm6rhef9lu6up12ya6gzskk5d.gif)
+![](http://192.168.1.66:30600/telemetry/clnzoxcy10001vy2ohi4obbi0/cm7hhbe65003cru047eqabmpg.gif)
 <h1 align="center">
   <br>
   <img src="https://github.com/hei-templates/hei-synd-logos/blob/5a15ff1e95e012e53c34580554a4834cdec05d01/hei-en.svg" alt="HEI-Vs Logo" width="350">
