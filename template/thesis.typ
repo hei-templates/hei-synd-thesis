@@ -1,7 +1,7 @@
 //
 // Description: Main document to stitch everything together
 //
-#import "@preview/hei-synd-report:0.1.0": *
+#import "@preview/hei-synd-report:0.1.1": *
 #import "/metadata.typ": *
 #import "/tail/bibliography.typ": *
 #import "/tail/glossary.typ": *

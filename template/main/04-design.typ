@@ -1,4 +1,4 @@
-#import "@preview/hei-synd-thesis:0.1.0": *
+#import "@preview/hei-synd-thesis:0.1.1": *
 #import "/metadata.typ": *
 #pagebreak()
 = #i18n("design-title", lang:option.lang) <sec:design>

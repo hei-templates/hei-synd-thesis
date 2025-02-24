@@ -13,7 +13,7 @@
 //-------------------------------------
 // Optional generate titlepage image
 //
-#import "@preview/fractusist:0.1.0":*
+#import "@preview/fractusist:0.1.1":*
 #let project-logo= dragon-curve(
   12,
   step-size: 10,

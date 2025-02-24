@@ -11,10 +11,10 @@ open := if os() == "linux" {
 
 project_dir   := justfile_directory()
 project_name  := file_stem(justfile_directory())
-project_tag   := "0.1.0"
+project_tag   := "0.1.1"
 
 typst_version := "typst -V"
-typst_github  := "https://github.com/typst/typst --tag v0.12.0"
+typst_github  := "https://github.com/typst/typst --tag v0.13.0"
 
 option_script := "change-options.bash"
 template_dir  := join(justfile_directory(), "template")

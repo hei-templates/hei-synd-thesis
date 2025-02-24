@@ -1,6 +1,7 @@
 [package]
 name = "hei-synd-thesis"
-version = "0.1.0"
+version = "0.1.1"
+compiler = "0.13.0"
 authors = [
   "Silvan Zahno <https://github.com/tschinz>",
   "Rémi Heredero <https://github.com/Klagarge>",
