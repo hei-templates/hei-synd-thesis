@@ -17,6 +17,11 @@ All notable changes to this project will be documented in this file.
 - *(typst)* Compatibility with typst 0.13.0
 - *(template)* Update to new template version number
 - *(packages)* Update packages to the latest version glossarium & fracturist
+- *(import)* Wrong package imported hei-synd-report instead of hei-synd-thesis
+
+### ⚙️ Miscellaneous Tasks
+
+- *(changelog)* Release 0.1.1
 
 ## [0.1.0] - 2025-02-03
 
