@@ -1,0 +1,100 @@
+name: build
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      release_version: ${{ steps.get_version.outputs.release_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get the latest tag to define version
+        id: get_version
+        run: |
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "Latest tag: $LATEST_TAG"
+          echo "RELEASE_VERSION=$LATEST_TAG" >> $GITHUB_ENV
+          echo "release_version=$LATEST_TAG" >> $GITHUB_OUTPUT
+
+      - name: Generate a changelog
+        uses: orhun/git-cliff-action@v3
+        with:
+          config: cliff.toml
+          args: --strip all --latest
+        env:
+          OUTPUT: CHANGELOG.md
+          GITHUB_REPO: ${{ github.repository }}
+
+      - name: Upload Changelog
+        uses: actions/upload-artifact@v4
+        with:
+          name: changelog
+          path: CHANGELOG.md
+
+  build:
+    needs: [prepare]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+        with:
+          typst-version: 0.13.0
+
+      - name: Install Package
+        env:
+          RELEASE_VERSION: ${{ needs.prepare.outputs.release_version }}
+        run: | 
+          mkdir -p ~/.cache/typst/packages/preview/hei-synd-thesis/${{ env.RELEASE_VERSION }}
+          cp -r ./ ~/.cache/typst/packages/preview/hei-synd-thesis/${{ env.RELEASE_VERSION }}
+
+      - name: Build Thesis
+        run: typst compile template/thesis.typ template/thesis.pdf
+
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDFs
+          path: template/thesis.pdf
+
+  release:
+    needs: [prepare, build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Move build artifacts to expected location
+        run: |
+          mkdir -p output
+          find artifacts -name "thesis*.pdf" -type f -exec cp {} output/ \;
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        env:
+          RELEASE_VERSION: ${{ needs.version.outputs.release_version }}
+        with:
+          tag_name: ${{ env.RELEASE_VERSION }}
+          name: "${{ env.RELEASE_VERSION }}"
+          body_path: artifacts/changelog/CHANGELOG.md
+          files: ./output/thesis*.pdf
