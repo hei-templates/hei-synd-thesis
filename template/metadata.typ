@@ -1,3 +1,5 @@
+#import "@preview/hei-synd-thesis:0.1.1": *
+
 //-------------------------------------
 // Document options
 //
