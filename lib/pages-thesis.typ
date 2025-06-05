@@ -16,6 +16,7 @@
     specialisation: none,
   ),
   author: (
+    gender      : none,
     name        : none,
     email       : none,
     degree      : none,
@@ -135,10 +136,12 @@
     ]
     #if template == "thesis" [
       #i18n("submission-date", lang: lang)\
-      #date.display("[day] [month repr:long] [year]")
+      #fmt-date(date, locale: lang, length: "medium")
+      //#date.display("[day] [month repr:long] [year]")
     ] else if template == "midterm" [
       #i18n("submission-date", lang: lang)\
-      #date.display("[day] [month repr:long] [year]")
+      #fmt-date(date, locale: lang, length: "medium")
+      //#date.display("[day] [month repr:long] [year]")
     ]
     #v(1em)
   ]
@@ -164,7 +167,7 @@
 
 #let summary(
   title: none,
-  student: none,
+  author: none,
   year: none,
   degree: none,
   field: none,
@@ -277,10 +280,18 @@
             size: 12pt,
             fill: gray.darken(50%),
           )
-          #i18n("graduate", lang: lang)
+          #let graduate_l = if author.gender == "feminin" {
+            i18n("graduate-f", lang: lang)
+          } else if author.gender == "inclusive" {
+            i18n("graduate-i", lang: lang)
+          } else {
+            i18n("graduate", lang: lang)
+          }
+
+          #graduate_l
         ],[
           #set text(size: 10pt)
-          #student
+          #author.name
         ]
       )
 
@@ -318,12 +329,31 @@
   v(2em)
   heading(numbering:none, outlined: false)[*#i18n("contact-info", lang: lang)*]
 
+  let author_l = if author.gender == "feminin" {
+    i18n("author-f", lang: lang)
+  } else if author.gender == "inclusive" {
+    i18n("author-i", lang: lang)
+  } else {
+    i18n("author", lang: lang)
+  }
+  let student_l = if author.gender == "feminin" {
+    i18n("student-f", lang: lang)
+  } else if author.gender == "inclusive" {
+    i18n("student-i", lang: lang)
+  } else {
+    i18n("student", lang: lang)
+  }
   table(
     columns: (auto, auto),
     stroke: none,
     align: left + top,
-    table.cell(rowspan: 3)[#if author.email != none {[#i18n("author", lang: lang):]}], [#author.name],
-    [#author.degree #if author.degree != none {[#i18n("student", lang: lang)]}],
+    table.cell(rowspan: 3)[#if author.email != none {[#author_l:]}], [#author.name],
+    if lang == "fr" {
+      [#if author.degree != none {student_l} #author.degree]
+    } else {
+      [#author.degree #if author.degree != none {student_l}]
+    },
+
     [#author.affiliation],
     [#if author.email != none {[#i18n("email", lang: lang):]}], [#link("mailto:author.email")[#author.email]],
   )

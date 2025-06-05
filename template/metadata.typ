@@ -2,8 +2,8 @@
 // Document options
 //
 #let option = (
-  //type : "final",
-  type : "draft",
+  type : "final",
+  //type : "draft",
   lang : "en",
   //lang : "de",
   //lang : "fr",
@@ -32,6 +32,7 @@
   title    : "Thesis Template",
   subtitle : "Longer Subtitle",
   author: (
+    gender      : "masculin",  // "feminin", "inclusive",
     name        : "Firstname Lastname",
     email       : "firstname.lastname@hevs.ch",
     degree      : "Bachelor",

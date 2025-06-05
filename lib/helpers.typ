@@ -14,6 +14,8 @@
 #import "@preview/glossarium:0.5.3": *
 // Wordometer for word and character count
 #import "@preview/wordometer:0.1.4": word-count
+// add datetime support for other languages
+#import "@preview/icu-datetime:0.1.2": fmt-datetime, fmt-date
 
 //-------------------------------------
 // Internationalization
