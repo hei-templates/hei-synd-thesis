@@ -45,6 +45,10 @@ jobs:
   build:
     needs: [prepare]
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        lang: ['en', 'fr', 'de']
+        type: ['draft', 'final']
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -61,14 +65,14 @@ jobs:
           mkdir -p ~/.cache/typst/packages/preview/hei-synd-thesis/${{ env.RELEASE_VERSION }}
           cp -r ./ ~/.cache/typst/packages/preview/hei-synd-thesis/${{ env.RELEASE_VERSION }}
 
-      - name: Build Thesis
-        run: typst compile template/thesis.typ template/thesis.pdf
+      - name: Build Thesis - ${{ matrix.lang }}/${{ matrix.type }}
+        run: typst compile template/thesis.typ template/thesis-${{ needs.prepare.outputs.release_version }}-${{ matrix.lang }}_${{ matrix.type }}.pdf --input lang=${{ matrix.lang }} --input type=${{ matrix.type }}
 
       - name: Upload PDF file
         uses: actions/upload-artifact@v4
         with:
-          name: PDFs
-          path: template/thesis.pdf
+          name: Thesis-${{ needs.prepare.outputs.release_version }}-${{ matrix.lang }}_${{ matrix.type }}
+          path: template/thesis-${{ needs.prepare.outputs.release_version }}-${{ matrix.lang }}_${{ matrix.type }}.pdf
 
   release:
     needs: [prepare, build]
