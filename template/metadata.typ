@@ -2,13 +2,9 @@
 // Document options
 //
 #let option = (
-  //type : "final",
-  type : "draft",
-  lang : "en",
-  //lang : "de",
-  //lang : "fr",
-  template    : "thesis",
-  //template    : "midterm"
+  type : sys.inputs.at("type", default:"draft"),    // [draft/final]
+  lang : sys.inputs.at("lang", default:"en"),       // [en/fr/de]
+  template    : "thesis",   // [thesis/midterm]
 )
 //-------------------------------------
 // Optional generate titlepage image
