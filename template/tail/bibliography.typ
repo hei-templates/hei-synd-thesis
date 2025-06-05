@@ -1,4 +1,3 @@
-#import "@preview/hei-synd-thesis:0.1.1": *
 #import "/metadata.typ": *
 #pagebreak()
 
