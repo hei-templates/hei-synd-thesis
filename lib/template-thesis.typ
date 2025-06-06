@@ -15,6 +15,7 @@
     title    : "Thesis Template",
     subtitle : "Longer Subtitle",
     author: (
+      gender      : "masculin",
       name        : "Firstname Lastname",
       email       : "firstname.lastname@hevs.ch",
       degree      : "Bachelor",
@@ -288,7 +289,7 @@
     pagebreak()
     summary(
       title: doc.title,
-      student: doc.author.name,
+      author: doc.author,
       year: date.submission.display("[year]"),
       degree: school.orientation,
       field: school.specialisation,
