@@ -96,7 +96,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         env:
-          RELEASE_VERSION: ${{ needs.version.outputs.release_version }}
+          RELEASE_VERSION: ${{ needs.prepare.outputs.release_version }}
         with:
           tag_name: ${{ env.RELEASE_VERSION }}
           name: "${{ env.RELEASE_VERSION }}"
