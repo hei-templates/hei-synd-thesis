@@ -54,29 +54,39 @@ commit_preprocessors = [
   #{ pattern = '.*', replace_command = 'typos --write-changes -' },
 ]
 # regex for parsing and grouping commits
+# # regex for parsing and grouping commits
 commit_parsers = [
-  { message = "^feat", group = "<!-- 0 -->🚀 Features" },
-  { message = "^fix", group = "<!-- 1 -->🐛 Bug Fixes" },
-  { message = "^doc", group = "<!-- 3 -->📚 Documentation" },
-  { message = "^docs", group = "<!-- 3 -->📚 Documentation" },
-  { message = "^perf", group = "<!-- 4 -->⚡ Performance" },
-  { message = "^refactor", group = "<!-- 2 -->🚜 Refactor" },
-  { message = "^style", group = "<!-- 5 -->🎨 Styling" },
-  { message = "^test", group = "<!-- 6 -->🧪 Testing" },
-  { message = "^chore\\(release\\): prepare for", skip = true },
-  { message = "^chore\\(deps.*\\)", skip = true },
-  { message = "^chore\\(pr\\)", skip = true },
-  { message = "^chore\\(pull\\)", skip = true },
-  { message = "^chore|^ci", group = "<!-- 7 -->⚙️ Miscellaneous Tasks" },
-  { message = "^chores\\(release\\): prepare for", skip = true },
-  { message = "^chores\\(deps.*\\)", skip = true },
-  { message = "^chores\\(pr\\)", skip = true },
-  { message = "^chores\\(pull\\)", skip = true },
-  { message = "^chores|^ci", group = "<!-- 7 -->⚙️ Miscellaneous Tasks" },
+  { message = "^feat(ure)?s?", group = "<!-- 0 -->🚀 Features" },
+  { message = "^fix(es)?", group = "<!-- 1 -->🐛 Bug Fixes" },
+  { message = "^docs?", group = "<!-- 3 -->📚 Documentation" },
+  { message = "^perf(ormance)?s?", group = "<!-- 4 -->⚡ Performance" },
+  { message = "^refactors?", group = "<!-- 2 -->🚜 Refactoring" },
+  { message = "^styles?", group = "<!-- 5 -->🎨 Styling" },
+  { message = "^tests?", group = "<!-- 6 -->🧪 Testing" },
+  { message = "^chores?", group = "<!-- 7 -->⚙️ Miscellaneous Tasks" },
+  { message = "^security", group = "<!-- 8 -->🛡️ Security" },
   { body = ".*security", group = "<!-- 8 -->🛡️ Security" },
-  { message = "^revert", group = "<!-- 9 -->◀️ Revert" },
+  { message = "^reverts?", group = "<!-- 9 -->◀️ Revert" },
+
+  # Conventional commit exclusions
+  { message = "^chores?\\(releases?\\):", skip = true },
+  { message = "^chores?\\(deps?.*\\)", skip = true },
+  { message = "^chores?\\(pr\\)", skip = true },
+  { message = "^chores?\\(pull\\)", skip = true },
+  { message = "^chores?\\(version\\):", skip = true },
+
+  # Legacy commit styles
+  { message = "(?i)^ADD", group = "<!-- 0 -->🚀 Features" },
+  { message = "(?i)^CHG", group = "<!-- 0 -->🚀 Features" },
+  { message = "(?i)^REM", group = "<!-- 2 -->🚜 Refactoring" },
+  { message = "(?i)^MOV", group = "<!-- 2 -->🚜 Refactoring" },
+  { message = "(?i)^FIX", group = "<!-- 1 -->🐛 Bug Fixes" },
+  { message = "(?i)^NOTE", group = "<!-- 10 -->💼 Other" },
+  { message = "(?i)^WARN", group = "<!-- 8 -->🛡️ Security" },
+
   { message = ".*", group = "<!-- 10 -->💼 Other" },
 ]
+
 # filter out the commits that are not matched by commit parsers
 filter_commits = false
 # sort the tags topologically
