@@ -24,7 +24,7 @@ This is the official template for a Bachlorthesis at the [HEI-Vs Engineering Sch
 
    ```bash
    # from the typst universe
-   typst init @preview/hei-synd-thesis:0.1.1
+   typst init @preview/hei-synd-thesis:0.2.0
    ```
 
 2. Fill in the metadata in the `metadata.typ` file.

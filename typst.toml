@@ -1,7 +1,5 @@
 [package]
-name = "hei-synd-thesis"
-version = "0.1.1"
-compiler = "0.13.0"
+compiler = "0.13.1"
 authors = [
   "Silvan Zahno <https://github.com/tschinz>",
   "Rémi Heredero <https://github.com/Klagarge>",
@@ -33,3 +31,5 @@ keywords = [
 path = "template"
 entrypoint = "thesis.typ"
 thumbnail = "thumbnail.png"
+name = "hei-synd-thesis"
+version = "0.2.0"
