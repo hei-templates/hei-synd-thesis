@@ -11,14 +11,12 @@ open := if os() == "linux" {
 
 project_dir   := justfile_directory()
 project_name  := file_stem(justfile_directory())
-project_tag   := "0.1.1"
+project_tag   := "0.2.0"
 
 typst_version := "typst -V"
-typst_github  := "https://github.com/typst/typst --tag v0.13.0"
+typst_github  := "https://github.com/typst/typst --tag v0.13.1"
 
-option_script := "change-options.bash"
 template_dir  := join(justfile_directory(), "template")
-scripts_dir   := join(justfile_directory(), "lib/scripts")
 doc_name      := "thesis"
 type          := "draft"
 lang          := "en"
@@ -69,22 +67,21 @@ preview_dir    := "~/work/repo/edu/template/packages/packages/preview"
   mkdir -p {{preview_dir}}/{{project_name}}/{{project_tag}}
   cp -r ./* {{preview_dir}}/{{project_name}}/{{project_tag}}
 
-
 # generate changelog
 @changelog:
   git-cliff
 
 # generate changelog for the unreleased specified tag
 @changelog-unreleased:
-  git-cliff -unreleased --tag {{project_tag}}
+  git-cliff --unreleased --tag {{project_tag}}
 
 # generate changelog and tag for the current release
 @changelog-release:
   git-cliff --tag {{project_tag}}
 
 # watch a typ file for continuous incremental build
-watch file_name=doc_name:
-  typst w {{template_dir}}/{{file_name}}.typ
+watch file_name=doc_name type=type lang=lang:
+  typst w {{template_dir}}/{{file_name}}.typ --input type={{type}} --input lang={{lang}}
 
 # open pdf
 open file_name=doc_name:
@@ -95,8 +92,7 @@ open file_name=doc_name:
   echo "--------------------------------------------------"
   echo "-- Generate {{file_name}}.pdf of type {{type}}"
   echo "--"
-  bash {{scripts_dir}}/{{option_script}} -t {{type}} -l {{lang}}
-  typst c {{template_dir}}/{{file_name}}.typ
+  typst c {{template_dir}}/{{file_name}}.typ  --input type={{type}} --input lang={{lang}}
   mv {{template_dir}}/{{file_name}}.pdf {{template_dir}}/{{file_name}}-{{lang}}-{{type}}.pdf
   just clean
 
