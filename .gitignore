@@ -1,0 +1,6 @@
+### macOS ###
+# General
+.DS_Store
+
+# template output pdf
+template/*.pdf
