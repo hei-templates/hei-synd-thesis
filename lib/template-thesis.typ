@@ -25,7 +25,7 @@
       signature   : none,
     ),
     keywords : ("HEI-Vs", "Systems Engineering", "Infotronics", "Thesis", "Template"),
-    version  : "v0.1.0",
+    version  : "v0.2.0",
   ),
   summary-page : (
     logo: none,
