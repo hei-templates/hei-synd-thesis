@@ -41,6 +41,7 @@ All metadata is optional, but it is recommended to fill in as much as possible. 
 | `doc.title`              | _content_                      | Title of the document.                                                                              |
 | `doc.subtitle`           | _content_                      | Subtitle of the document.                                                                           |
 | `doc.author`             | _dictionary_                   | Author metadata                                                                                     |
+| `doc.author.gender`      | _string_ ("masculin", "feminin", "inclusive") | Gender of the author (default: `"masculin"`)                                         |
 | `doc.author.name`        | _content_                      | Name of the author.                                                                                 |
 | `doc.author.email`       | _string_                       | Email of the author.                                                                                |
 | `doc.author.degree`      | _content_                      | Degree of the author.                                                                               |
@@ -103,14 +104,18 @@ typst compile thesis.typ
 
 # Create pdf and watch for changes
 typst watch thesis.typ
+
+# Create pdf with the options for language and type you want
+typst compile thesis.typ --input type="draft" --input lang="de"
 ```
 
 ## Features
 
 - [x] All metadata is optional
 - [x] Multilanguage support
+- [x] Support for inclusive gender language
 - [x] Customizable logos
-- [x] Draft and Final Typesetting
+- [x] Draft and Final Typesetting via typst inputs
 - [x] Title page
 - [x] Summary page
 - [x] Table of contents
