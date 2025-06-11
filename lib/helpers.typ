@@ -11,7 +11,7 @@
 // Fancy prettyY print with line numbers and stuff
 #import "@preview/codelst:2.0.2": sourcecode
 // Glossarium for glossary
-#import "@preview/glossarium:0.5.3": *
+#import "@preview/glossarium:0.5.6": *
 // Wordometer for word and character count
 #import "@preview/wordometer:0.1.4": word-count
 // add datetime support for other languages
