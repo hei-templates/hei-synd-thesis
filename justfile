@@ -86,7 +86,7 @@ open file_name=doc_name:
 # build, rename and copy a typ file to a pdf
 @pdf file_name=doc_name type=type lang=lang:
   echo "--------------------------------------------------"
-  echo "-- Generate {{file_name}}.pdf of type {{type}}"
+  echo "-- Generate {{file_name}}.pdf of type {{type}} in language {{lang}}"
   echo "--"
   typst c {{template_dir}}/{{file_name}}.typ  --input type={{type}} --input lang={{lang}}
   mv {{template_dir}}/{{file_name}}.pdf {{template_dir}}/{{file_name}}-{{lang}}-{{type}}.pdf
