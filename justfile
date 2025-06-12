@@ -66,6 +66,13 @@ preview_dir    := "~/work/repo/edu/template/packages/packages/preview"
   echo "Install template locally as preview"
   mkdir -p {{preview_dir}}/{{project_name}}/{{project_tag}}
   cp -r ./* {{preview_dir}}/{{project_name}}/{{project_tag}}
+  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/guide-to-thesis.pdf
+  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/guide-to-typst.pdf
+  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/sample.png
+  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/sample.svg
+  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/justfile
+  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/template/*.pdf
+
 
 # generate changelog and tag for the current release
 @changelog-unrelease:
