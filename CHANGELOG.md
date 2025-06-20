@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.1] - 2025-06-20
+
+### 🚀 Features
+
+- *(template)* Add codly& cheq package, customize codelst ([6393b3c](https://github.com/hei-templates/hei-synd-thesis/commit/6393b3cf3e01a519f9da0a4853084e6a4426b5fb) - zas)
+- *(template)* Add syntax files within helpers ([eb7150b](https://github.com/hei-templates/hei-synd-thesis/commit/eb7150b8b0dd5154e8ef4eb56c8135287df8267e) - zas)
+
+### 🐛 Bug Fixes
+
+- *(ci)* Remove typst version to use always latest ([da9fc8d](https://github.com/hei-templates/hei-synd-thesis/commit/da9fc8d486e772d4d2deae4a99ec3ec21fb125ef) - Klagarge)
+- *(template)* Sample content ([2641cbe](https://github.com/hei-templates/hei-synd-thesis/commit/2641cbe7a383b591ad55c5c46eb73cae395e9b76) - zas)
+- *(just)* Watch also opens the file ([4296458](https://github.com/hei-templates/hei-synd-thesis/commit/42964589ef57829dbfb3769cab20dfc5c4a9ba04) - zas)
+- *(template)* Option comments ([1327420](https://github.com/hei-templates/hei-synd-thesis/commit/132742064e04b2f37a072919f9f855c550b6dcdb) - zas)
+
+### 💼 Other
+
+- Merge branch fix/typst-version
+
+fix(ci): remove typst version to use always latest ([2c3178b](https://github.com/hei-templates/hei-synd-thesis/commit/2c3178b404e3c26c04eac0496b98abe073919609) - Klagarge)
+- Merge remote-tracking branch 'origin/main' into fix/deployment ([1d9bc46](https://github.com/hei-templates/hei-synd-thesis/commit/1d9bc469aea289f405921b2395c957a6093c52ab) - zas)
+
+### 🚜 Refactoring
+
+- *(just)* Only copy required files ([d4de112](https://github.com/hei-templates/hei-synd-thesis/commit/d4de11274fc352427ea07f0a33fe2189199f20b1) - zas)
+
+### ⚙️ Miscellaneous Tasks
+
+- *(release)* Update sample images ([bdeba65](https://github.com/hei-templates/hei-synd-thesis/commit/bdeba656d3c6b15aa875ac0c352201bc87a289c5) - zas)
+
+
+
+
+**Full Changelog**: [0.2.0...0.2.1](https://github.com/hei-templates/hei-synd-thesis/compare/0.2.0...0.2.1)
+
 ## [0.2.0] - 2025-06-10
 
 ### 🚀 Features
