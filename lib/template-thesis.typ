@@ -261,6 +261,17 @@
       it,
     )
   }
+  show: codly-init.with()
+  codly(
+    languages: codly-languages,
+    zebra-fill: none,
+    stroke: 0.1pt + code-border,
+    radius: 4pt,
+    number-format: (number) => text(luma(210), size:7pt, [#h(1em)#number]),
+    inset: (left:0em, rest:0.32em),
+    fill: code-bg,
+  )
+
 
   // Title page
   page-title-thesis(
