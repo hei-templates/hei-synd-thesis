@@ -149,21 +149,15 @@ or directly from a file
 caption: [Second part of the USS-Rustacean code from `/resources/code/uss-rustacean.rs`]
 )
 
-== Context Problem
-
-
-#gls("hei")
-#gls("rust") #glspl("rust")
-
-
-#cite(<zahnoDynamicProjectPlanning2023>)
-#cite(<zahnoDynamicProjectPlanning2023>, supplement:[p.7ff])
+or alternatively with as a simple code block, which features the codly package:
 
 ```rust
 fn main() {
-  println!("Hello World!");
+  println!("Boldly going where no one has gone before!");
 }
 ```
+
+== Context Problem
 
 #lorem(50)
 
