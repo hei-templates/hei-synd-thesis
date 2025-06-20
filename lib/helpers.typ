@@ -8,14 +8,34 @@
 #import "items.typ": *
 
 // External Plugins
-// Fancy prettyY print with line numbers and stuff
+// Fancy pretty print with line numbers and stuff
 #import "@preview/codelst:2.0.2": sourcecode
+#import "@preview/codly:1.3.0": *
+#import "@preview/codly-languages:0.1.1": *
 // Glossarium for glossary
 #import "@preview/glossarium:0.5.6": *
 // Wordometer for word and character count
 #import "@preview/wordometer:0.1.4": word-count
 // add datetime support for other languages
 #import "@preview/icu-datetime:0.1.2": fmt-datetime, fmt-date
+// List with Checkmarks
+#import "@preview/cheq:0.2.2": checklist
+
+//-------------------------------------
+// Sourcecode modifs
+//
+#let sourcecode = sourcecode.with(
+  frame: block.with(
+    fill: code-bg,
+    stroke: (left: 3pt + luma(80%), rest: 0.1pt + code-border),
+    radius: (left:0pt, right: 4pt),
+    inset: (left:7pt, rest:10pt),
+  ),
+  numbering: "1",
+  numbers-style: (lno) => text(luma(210), size:7pt, lno + h(0.3em)),
+  numbers-step: 1,
+  numbers-width: -1.2em,
+)
 
 //-------------------------------------
 // Internationalization
