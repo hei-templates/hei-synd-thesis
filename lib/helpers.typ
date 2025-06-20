@@ -36,6 +36,9 @@
   numbers-step: 1,
   numbers-width: -1.2em,
 )
+// code blocks
+#set raw(syntaxes:"syntax/VHDL.sublime-syntax")
+#set raw(syntaxes:"syntax/riscv.sublime-syntax")
 
 //-------------------------------------
 // Internationalization
