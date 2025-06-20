@@ -55,8 +55,6 @@ jobs:
 
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
-        with:
-          typst-version: 0.13.0
 
       - name: Install Package
         env:
