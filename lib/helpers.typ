@@ -388,6 +388,23 @@
     }
   }
 }
+#let listing-links(
+  names: none,
+  links: none,
+) = {
+  if names != none {
+    let i = 0
+    for name in names {
+      if name != none {
+        [#link(links.at(i))[#name]]
+        if i+1 < names.len() {
+          [ \ ]
+        }
+      }
+      i = i + 1
+    }
+  }
+}
 #let enumerating-emails(
   names:  none,
   emails: none,
@@ -399,6 +416,23 @@
         [#link("mailto:"+emails.at(i))[#name]]
         if i+1 < names.len() {
         [, ]
+        }
+      }
+      i = i + 1
+    }
+  }
+}
+#let listing-emails(
+  names:  none,
+  emails: none,
+) = {
+  if names != none {
+    let i = 0
+    for name in names {
+      if name != none {
+        [#link("mailto:"+emails.at(i))[#name]]
+        if i+1 < names.len() {
+        [ \ ]
         }
       }
       i = i + 1
