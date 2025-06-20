@@ -84,6 +84,8 @@ preview_dir    := "~/work/repo/edu/template/packages/packages/preview"
 
 # watch a typ file for continuous incremental build
 watch file_name=doc_name type=type lang=lang:
+  typst c {{template_dir}}/{{file_name}}.typ --input type={{type}} --input lang={{lang}}
+  just open {{file_name}}
   typst w {{template_dir}}/{{file_name}}.typ --input type={{type}} --input lang={{lang}}
 
 # open pdf
