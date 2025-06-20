@@ -11,7 +11,7 @@ open := if os() == "linux" {
 
 project_dir   := justfile_directory()
 project_name  := file_stem(justfile_directory())
-project_tag   := "0.2.0"
+project_tag   := "0.2.1"
 
 typst_version := "typst -V"
 typst_github  := "https://github.com/typst/typst --tag v0.13.1"
@@ -66,6 +66,13 @@ preview_dir    := "~/work/repo/edu/template/packages/packages/preview"
   echo "Install template locally as preview"
   mkdir -p {{preview_dir}}/{{project_name}}/{{project_tag}}
   cp -r ./* {{preview_dir}}/{{project_name}}/{{project_tag}}
+  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/guide-to-thesis.pdf
+  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/guide-to-typst.pdf
+  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/sample.png
+  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/sample.svg
+  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/justfile
+  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/template/*.pdf
+
 
 # generate changelog and tag for the current release
 @changelog-unrelease:
@@ -77,6 +84,8 @@ preview_dir    := "~/work/repo/edu/template/packages/packages/preview"
 
 # watch a typ file for continuous incremental build
 watch file_name=doc_name type=type lang=lang:
+  typst c {{template_dir}}/{{file_name}}.typ --input type={{type}} --input lang={{lang}}
+  just open {{file_name}}
   typst w {{template_dir}}/{{file_name}}.typ --input type={{type}} --input lang={{lang}}
 
 # open pdf

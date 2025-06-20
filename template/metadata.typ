@@ -1,11 +1,11 @@
-#import "@preview/hei-synd-thesis:0.2.0": *
+#import "@preview/hei-synd-thesis:0.2.1": *
 
 //-------------------------------------
 // Document options
 //
 #let option = (
-  type : sys.inputs.at("type", default:"draft"),    // [draft/final]
-  lang : sys.inputs.at("lang", default:"en"),       // [en/fr/de]
+  type : sys.inputs.at("type", default:"draft"),    // [draft|final]
+  lang : sys.inputs.at("lang", default:"en"),       // [en|fr|de]
   template    : "thesis",   // [thesis/midterm]
 )
 //-------------------------------------
@@ -28,7 +28,7 @@
   title    : "Thesis Template",
   subtitle : "Longer Subtitle",
   author: (
-    gender      : "masculin",  // "feminin", "inclusive",
+    gender      : "masculin",  // ["masculin"|"feminin"|"inclusive"]
     name        : "Firstname Lastname",
     email       : "firstname.lastname@hevs.ch",
     degree      : "Bachelor",
