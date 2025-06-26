@@ -22,7 +22,7 @@ type          := "draft"
 lang          := "en"
 
 local_dir      := "~/Library/Application\\ Support/typst/packages/local"
-preview_dir    := "~/work/repo/edu/template/packages/packages/preview"
+preview_dir    := "~/Library/Application\\ Support/typst/packages/preview"
 
 ##################################################
 # COMMANDS
