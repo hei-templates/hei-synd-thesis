@@ -24,7 +24,7 @@ This is the official template for a Bachelorthesis at the [HEI-Vs Engineering Sc
 
    ```bash
    # from the typst universe
-   typst init @preview/hei-synd-thesis:0.2.1
+   typst init @preview/hei-synd-thesis:0.2.2
    ```
 
 2. Fill in the metadata in the `metadata.typ` file.
@@ -51,6 +51,7 @@ All metadata is optional, but it is recommended to fill in as much as possible. 
 | `doc.author.signature`   | _image_                        | Signature of the author.                                                                            |
 | `doc.keywords`           | _list_ of _string_             | Keywords for the document.                                                                          |
 | `doc.version`            | _content_                      | Version of the document.                                                                            |
+| `data-page`              | _bytes_                        | Bytes of the pdf of the thesis data use `read("/path/file.pdf", encoding:none)`                     |
 | `summary-page`           | _dictionary_                   | Summary page metadata                                                                               |
 | `summary-page.logo`      | _image_                        | Logo for the summary page.                                                                          |
 | `summary-page.objective` | _content_                      | Objective of the document.                                                                          |
@@ -117,6 +118,7 @@ typst compile thesis.typ --input type="draft" --input lang="de"
 - [x] Customizable logos
 - [x] Draft and Final Typesetting via typst inputs
 - [x] Title page
+- [x] Thesis data page
 - [x] Summary page
 - [x] Table of contents
 - [x] Table of figures

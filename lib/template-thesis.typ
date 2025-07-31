@@ -27,6 +27,7 @@
     keywords : ("HEI-Vs", "Systems Engineering", "Infotronics", "Thesis", "Template"),
     version  : "v0.1.0",
   ),
+  data-page: none,
   summary-page : (
     logo: none,
     objective: none,
@@ -293,6 +294,11 @@
   if option.type == "draft" {
     pagebreak()
     outline-todos()
+  }
+
+  // Data
+  if data-page != none {
+    page-pdf(data: data-page)
   }
 
   // Summary
