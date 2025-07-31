@@ -1,4 +1,4 @@
-#import "@preview/hei-synd-thesis:0.2.1": *
+#import "@preview/hei-synd-thesis:0.2.2": *
 
 //-------------------------------------
 // Document options
@@ -40,6 +40,9 @@
   keywords : ("HEI-Vs", "Systems Engineering", "Infotronics", "Thesis", "Template"),
   version  : "v0.1.0",
 )
+
+#let data-page = read("/resources/thesis-data.pdf", encoding: none)
+//#let data-page = none
 
 #let summary-page = (
   logo: project-logo,

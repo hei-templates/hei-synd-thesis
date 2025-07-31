@@ -379,3 +379,19 @@
     ]},
   )
 }
+
+#let page-pdf(
+  data: none,
+) = {
+  if data != none {
+    set page(
+      margin: (0cm),
+      header: none,
+      footer: none,
+    )
+    muchpdf(
+      data,
+      width: 100%,
+    )
+  }
+}

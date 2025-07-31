@@ -13,6 +13,7 @@
 #show: thesis.with(
   option: option,
   doc: doc,
+  data-page: data-page,
   summary-page: summary-page,
   professor: professor,
   expert: expert,
