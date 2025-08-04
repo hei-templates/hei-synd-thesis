@@ -41,8 +41,7 @@
   version  : "v0.1.0",
 )
 
-#let data-page = read("/resources/thesis-data.pdf", encoding: none)
-//#let data-page = none
+#let data-page = read("/resources/thesis-data.pdf", encoding: none) // [bytes|none]
 
 #let summary-page = (
   logo: project-logo,
