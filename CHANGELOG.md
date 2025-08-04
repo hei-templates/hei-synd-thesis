@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.2] - 2025-07-31
+
+### 🚀 Features
+
+- *(lib)* Add datapage feature ([60f59ed](https://github.com/hei-templates/hei-synd-thesis/commit/60f59edf4a69ba7954be7f01dac4bf5a13b5a922) - zas)
+
+### 🐛 Bug Fixes
+
+- *(readme)* Orthograph for pedantic pr checker ([b7eedc5](https://github.com/hei-templates/hei-synd-thesis/commit/b7eedc5d67e1f93c364f30d08278de7c38a10915) - zas)
+
+### ⚙️ Miscellaneous Tasks
+
+- *(packages)* Bump package versions ([5f5834c](https://github.com/hei-templates/hei-synd-thesis/commit/5f5834cee047c6aa1baedfd3bdeaed6d906fdcbf) - zas)
+
+
+**Full Changelog**: [0.2.1...0.2.2](https://github.com/hei-templates/hei-synd-thesis/compare/0.2.1...0.2.2)
+
 ## [0.2.1] - 2025-06-20
 
 ### 🚀 Features
@@ -30,9 +47,6 @@ fix(ci): remove typst version to use always latest ([2c3178b](https://github.com
 ### ⚙️ Miscellaneous Tasks
 
 - *(release)* Update sample images ([bdeba65](https://github.com/hei-templates/hei-synd-thesis/commit/bdeba656d3c6b15aa875ac0c352201bc87a289c5) - zas)
-
-
-
 
 **Full Changelog**: [0.2.0...0.2.1](https://github.com/hei-templates/hei-synd-thesis/compare/0.2.0...0.2.1)
 
