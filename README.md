@@ -139,6 +139,7 @@ typst compile thesis.typ --input type="draft" --input lang="de"
    - [x] Implementation
    - [x] Validation
    - [x] Conclusion
+- [x] Custom title page
 - [ ] Wavedrom diagrams
 - [ ] PlantUML diagrams
 
