@@ -57,6 +57,7 @@
   ),
   title-extra-content-top: none,
   title-extra-content-bottom: none,
+  custom-title-page: none,
   body) = {
   // Sanitize inputs
   doc.title    = doc.at("title", default: none)
@@ -273,22 +274,26 @@
     fill: code-bg,
   )
 
-
   // Title page
-  page-title-thesis(
-    title: doc.title,
-    subtitle: doc.subtitle,
-    date: date.submission,
-    lang: option.lang,
-    template: option.template,
-    school: school,
-    author: doc.author,
-    professor: professor,
-    expert: expert,
-    logos: logos,
-    extra-content-top: title-extra-content-top,
-    extra-content-bottom: title-extra-content-bottom,
-  )
+  if custom-title-page == none {
+    page-title-thesis(
+      title: doc.title,
+      subtitle: doc.subtitle,
+      date: date.submission,
+      lang: option.lang,
+      template: option.template,
+      school: school,
+      author: doc.author,
+      professor: professor,
+      expert: expert,
+      logos: logos,
+      extra-content-top: title-extra-content-top,
+      extra-content-bottom: title-extra-content-bottom,
+    )
+  } else {
+    custom-title-page
+  }
+
 
   // Table of Todos if draft
   if option.type == "draft" {
