@@ -28,7 +28,7 @@ jobs:
           echo "release_version=$LATEST_TAG" >> $GITHUB_OUTPUT
 
       - name: Generate a changelog
-        uses: orhun/git-cliff-action@v3
+        uses: orhun/git-cliff-action@v4
         with:
           config: cliff.toml
           args: --strip all --latest
