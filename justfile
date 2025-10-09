@@ -21,8 +21,17 @@ doc_name      := "thesis"
 type          := "draft"
 lang          := "en"
 
-local_dir      := "~/Library/Application\\ Support/typst/packages/local"
-preview_dir    := "~/Library/Application\\ Support/typst/packages/preview"
+local_dir := if os() == "macos" {
+  "~/Library/Application\\ Support/typst/packages/local"
+} else {
+  "~/.local/share/typst/packages/local"
+}
+
+preview_dir := if os() == "macos" {
+  "~/Library/Caches/typst/packages/preview"
+} else {
+  "~/.cache/typst/packages/preview/"
+}
 
 ##################################################
 # COMMANDS
@@ -54,6 +63,7 @@ preview_dir    := "~/Library/Application\\ Support/typst/packages/preview"
   brew install typst
 
 # install the template locally as local package
+[linux]
 [macos]
 @copy-local:
   echo "Install template locally as local"
@@ -61,6 +71,7 @@ preview_dir    := "~/Library/Application\\ Support/typst/packages/preview"
   cp -r ./* {{local_dir}}/{{project_name}}/{{project_tag}}
 
 # install the template locally as preview package
+[linux]
 [macos]
 @copy-preview:
   echo "Install template locally as preview"
