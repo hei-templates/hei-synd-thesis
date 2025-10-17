@@ -13,13 +13,13 @@
 #import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.8": *
 // Glossarium for glossary
-#import "@preview/glossarium:0.5.8": *
+#import "@preview/glossarium:0.5.9": *
 // Wordometer for word and character count
-#import "@preview/wordometer:0.1.4": word-count
+#import "@preview/wordometer:0.1.5": word-count
 // add datetime support for other languages
 #import "@preview/icu-datetime:0.1.2": fmt-datetime, fmt-date
 // List with Checkmarks
-#import "@preview/cheq:0.2.3": checklist
+#import "@preview/cheq:0.3.0": checklist
 // PDF integration
 #import "@preview/muchpdf:0.1.1": muchpdf
 
