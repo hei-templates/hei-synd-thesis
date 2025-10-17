@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.3] - 2025-10-17
+
+### 🚀 Features
+
+- Feat(template): add possibility to load a custom title page
+- this fonctionnality adds an argument to thesis to specify the content to load
+- if this new argument is none, it keeps the default title page ([c385a42](https://github.com/hei-templates/hei-synd-thesis/commit/c385a425024b0453fb260dca71e3161c9724336d) - fastium)
+- *(doc)* Create first version of contributing.md ([c8f96a5](https://github.com/hei-templates/hei-synd-thesis/commit/c8f96a54ea32bfbcfdc9c00a1bdaf61a250737b8) - zas)
+
+### 💼 Other
+
+- *(release)* Fix git cliff version ([e4d582a](https://github.com/hei-templates/hei-synd-thesis/commit/e4d582a97f8676097f204e40ac94f6c5847b928b) - Klagarge)
+- *(check)* Add check CI for version number and build on pull request ([dc25ed1](https://github.com/hei-templates/hei-synd-thesis/commit/dc25ed1db3c5088eb4496f8eee394fa6e00ab302) - Klagarge)
+
+### ⚙️ Miscellaneous Tasks
+
+- *(tool)* Update directories paths for cross-platform compatibility ([ba6c9de](https://github.com/hei-templates/hei-synd-thesis/commit/ba6c9de876519aaf2d7596cd425af49c67da4429) - Klagarge)
+
+
+
+
+**Full Changelog**: [0.2.2...0.2.3](https://github.com/hei-templates/hei-synd-thesis/compare/0.2.2...0.2.3)
+
+## [0.2.3] - 2025-10-17
+
+### 🚀 Features
+
+- Feat(template): add possibility to load a custom title page
+- this fonctionnality adds an argument to thesis to specify the content to load
+- if this new argument is none, it keeps the default title page ([c385a42](https://github.com/hei-templates/hei-synd-thesis/commit/c385a425024b0453fb260dca71e3161c9724336d) - fastium)
+
+### 💼 Other
+
+- *(release)* Fix git cliff version ([e4d582a](https://github.com/hei-templates/hei-synd-thesis/commit/e4d582a97f8676097f204e40ac94f6c5847b928b) - Klagarge)
+- *(check)* Add check CI for version number and build on pull request ([dc25ed1](https://github.com/hei-templates/hei-synd-thesis/commit/dc25ed1db3c5088eb4496f8eee394fa6e00ab302) - Klagarge)
+
+### ⚙️ Miscellaneous Tasks
+
+- *(tool)* Update directories paths for cross-platform compatibility ([ba6c9de](https://github.com/hei-templates/hei-synd-thesis/commit/ba6c9de876519aaf2d7596cd425af49c67da4429) - Klagarge)
+
+
+
+
+**Full Changelog**: [0.2.2...0.2.3](https://github.com/hei-templates/hei-synd-thesis/compare/0.2.2...0.2.3)
+
 ## [0.2.2] - 2025-07-31
 
 ### 🚀 Features

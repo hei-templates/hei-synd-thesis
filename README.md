@@ -1,6 +1,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/hei-templates/hei-synd-thesis)
 ![GitHub Release](https://img.shields.io/github/v/release/hei-templates/hei-synd-thesis)
 ![](https://tianji.zahno.dev/telemetry/clnzoxcy10001vy2ohi4obbi0/cm7hhbe65003cru047eqabmpg.gif)
+
 <h1 align="center">
   <br>
   <img src="https://github.com/hei-templates/hei-synd-logos/blob/5a15ff1e95e012e53c34580554a4834cdec05d01/hei-en.svg" alt="HEI-Vs Logo" width="350">
@@ -24,74 +25,74 @@ This is the official template for a Bachelorthesis at the [HEI-Vs Engineering Sc
 
    ```bash
    # from the typst universe
-   typst init @preview/hei-synd-thesis:0.2.2
+   typst init @preview/hei-synd-thesis:0.2.3
    ```
 
 2. Fill in the metadata in the `metadata.typ` file.
 
 All metadata is optional, but it is recommended to fill in as much as possible. The metadata is divided into three sections: `options`, `doc`, and `settings`.
 
-| Metadata                 | Type                           | Description                                                                                         |
-| ------------------------ | ------------------------------ | --------------------------------------------------------------------------------------------------- |
-| `options`                | _dictionary_                   | These are fixed values for the document, who doesn't contribute to the content.                     |
-| `option.type`            | _string_ ("draft","final")     | Type of the document. "final" will omit some text at the beginning of chapters (default: `"final"`) |
-| `option.lang`            | _string_ ("en", "fr", "de")    | Language of the document. Many element will be changed accordingly (default:`"en"`)                 |
-| `option.template`        | _string_ ("thesis", "midterm") | Template of the document (default: `"thesis"`)                                                      |
-| `doc`                    | _dictionary_                   | Document metadata                                                                                   |
-| `doc.title`              | _content_                      | Title of the document.                                                                              |
-| `doc.subtitle`           | _content_                      | Subtitle of the document.                                                                           |
-| `doc.author`             | _dictionary_                   | Author metadata                                                                                     |
-| `doc.author.gender`      | _string_ ("masculin", "feminin", "inclusive") | Gender of the author (default: `"masculin"`)                                         |
-| `doc.author.name`        | _content_                      | Name of the author.                                                                                 |
-| `doc.author.email`       | _string_                       | Email of the author.                                                                                |
-| `doc.author.degree`      | _content_                      | Degree of the author.                                                                               |
-| `doc.author.affiliation` | _content_                      | Affiliation of the author.                                                                          |
-| `doc.author.place`       | _content_                      | Place of the author.                                                                                |
-| `doc.author.url`         | _string_                       | URL of the author.                                                                                  |
-| `doc.author.signature`   | _image_                        | Signature of the author.                                                                            |
-| `doc.keywords`           | _list_ of _string_             | Keywords for the document.                                                                          |
-| `doc.version`            | _content_                      | Version of the document.                                                                            |
-| `data-page`              | _bytes_                        | Bytes of the pdf of the thesis data use `read("/path/file.pdf", encoding:none)`                     |
-| `summary-page`           | _dictionary_                   | Summary page metadata                                                                               |
-| `summary-page.logo`      | _image_                        | Logo for the summary page.                                                                          |
-| `summary-page.objective` | _content_                      | Objective of the document.                                                                          |
-| `summary-page.content`   | _content_                      | Content of the document.                                                                            |
-| `professor`              | _dictionary_                   | Professor metadata                                                                                  |
-| `professor.name`         | _content_                      | Name of the professor.                                                                              |
-| `professor.email`        | _string_                       | Email of the professor.                                                                             |
-| `professor.url`          | _string_                       | URL of the professor.                                                                               |
-| `expert`                 | _dictionary_                   | Expert metadata                                                                                     |
-| `expert.name`            | _content_                      | Name of the expert.                                                                                 |
-| `expert.email`           | _string_                       | Email of the expert.                                                                                |
-| `expert.url`             | _string_                       | URL of the expert.                                                                                  |
-| `school`                 | _dictionary_                   | School metadata                                                                                     |
-| `school.name`            | _content_                      | Name of the school.                                                                                 |
-| `school.orientation`     | _content_                      | Major of the school.                                                                                |
-| `school.specialisation`  | _content_                      | Specialisation of the degree program.                                                               |
-| `school.url`             | _string_                       | URL of the school.                                                                                  |
-| `date`                   | _datetime_                     | Date matadata of the document                                                                       |
-| `date.submission`        | _datetime_                     | Submission date of the document                                                                     |
-| `date.mid-term-submission`| _datetime_                    | Mid-term submission date of the document                                                            |
-| `date.today`             | _datetime_                     | Today's date of the document                                                                        |
-| `logos`                  | _dictionary_                   | Logos metadata                                                                                      |
-| `logos.main`             | _image_                        | Main logo of the document                                                                           |
-| `logos.topleft`          | _image_                        | Top left logo of the document                                                                       |
-| `logos.topright`         | _image_                        | Top right logo of the document                                                                      |
-| `logos.bottomleft`       | _image_                        | Bottom left logo of the document                                                                    |
-| `logos.bottomright`      | _image_                        | Bottom right logo of the document                                                                   |
-| `tableof`                | _dictionary_                   | Table of ... settings for the document                                                              |
-| `tableof.toc`            | _boolean_                      | Create table of contents (default: `true`)                                                          |
-| `tableof.tof`            | _boolean_                      | Create table of figures (default: `false`)                                                          |
-| `tableof.tot`            | _boolean_                      | Create table of tables (default: `false`)                                                           |
-| `tableof.tol`            | _boolean_                      | Create table of listings (default: `false`)                                                         |
-| `tableof.toe`            | _boolean_                      | Create table of equations (default: `false`)                                                        |
-| `tableof.maxdepth`       | _integer_                      | Max depth of the table of contents (default: `3`)                                                   |
-| `gloss`                  | _boolean_                      | Create glossary and acronyms (default: `true`)                                                      |
-| `appendix`               | _boolean_                      | Create appendix (default: `false`)                                                                  |
-| `bib`                    | _dictionary_                   | Bibliography settings for the document                                                              |
-| `bib.display`            | _boolean_                      | Display bibliography (default: `true`)                                                              |
-| `bib.path`               | _string_                       | Path to the bibliography file (default: `"/tail/bibliography.bib"`)                                 |
-| `bib.style`              | _string_                       | Style of the bibliography (default: `"ieee"`)                                                       |
+| Metadata                   | Type                                          | Description                                                                                         |
+| -------------------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `options`                  | _dictionary_                                  | These are fixed values for the document, who doesn't contribute to the content.                     |
+| `option.type`              | _string_ ("draft","final")                    | Type of the document. "final" will omit some text at the beginning of chapters (default: `"final"`) |
+| `option.lang`              | _string_ ("en", "fr", "de")                   | Language of the document. Many element will be changed accordingly (default:`"en"`)                 |
+| `option.template`          | _string_ ("thesis", "midterm")                | Template of the document (default: `"thesis"`)                                                      |
+| `doc`                      | _dictionary_                                  | Document metadata                                                                                   |
+| `doc.title`                | _content_                                     | Title of the document.                                                                              |
+| `doc.subtitle`             | _content_                                     | Subtitle of the document.                                                                           |
+| `doc.author`               | _dictionary_                                  | Author metadata                                                                                     |
+| `doc.author.gender`        | _string_ ("masculin", "feminin", "inclusive") | Gender of the author (default: `"masculin"`)                                                        |
+| `doc.author.name`          | _content_                                     | Name of the author.                                                                                 |
+| `doc.author.email`         | _string_                                      | Email of the author.                                                                                |
+| `doc.author.degree`        | _content_                                     | Degree of the author.                                                                               |
+| `doc.author.affiliation`   | _content_                                     | Affiliation of the author.                                                                          |
+| `doc.author.place`         | _content_                                     | Place of the author.                                                                                |
+| `doc.author.url`           | _string_                                      | URL of the author.                                                                                  |
+| `doc.author.signature`     | _image_                                       | Signature of the author.                                                                            |
+| `doc.keywords`             | _list_ of _string_                            | Keywords for the document.                                                                          |
+| `doc.version`              | _content_                                     | Version of the document.                                                                            |
+| `data-page`                | _bytes_                                       | Bytes of the pdf of the thesis data use `read("/path/file.pdf", encoding:none)`                     |
+| `summary-page`             | _dictionary_                                  | Summary page metadata                                                                               |
+| `summary-page.logo`        | _image_                                       | Logo for the summary page.                                                                          |
+| `summary-page.objective`   | _content_                                     | Objective of the document.                                                                          |
+| `summary-page.content`     | _content_                                     | Content of the document.                                                                            |
+| `professor`                | _dictionary_                                  | Professor metadata                                                                                  |
+| `professor.name`           | _content_                                     | Name of the professor.                                                                              |
+| `professor.email`          | _string_                                      | Email of the professor.                                                                             |
+| `professor.url`            | _string_                                      | URL of the professor.                                                                               |
+| `expert`                   | _dictionary_                                  | Expert metadata                                                                                     |
+| `expert.name`              | _content_                                     | Name of the expert.                                                                                 |
+| `expert.email`             | _string_                                      | Email of the expert.                                                                                |
+| `expert.url`               | _string_                                      | URL of the expert.                                                                                  |
+| `school`                   | _dictionary_                                  | School metadata                                                                                     |
+| `school.name`              | _content_                                     | Name of the school.                                                                                 |
+| `school.orientation`       | _content_                                     | Major of the school.                                                                                |
+| `school.specialisation`    | _content_                                     | Specialisation of the degree program.                                                               |
+| `school.url`               | _string_                                      | URL of the school.                                                                                  |
+| `date`                     | _datetime_                                    | Date matadata of the document                                                                       |
+| `date.submission`          | _datetime_                                    | Submission date of the document                                                                     |
+| `date.mid-term-submission` | _datetime_                                    | Mid-term submission date of the document                                                            |
+| `date.today`               | _datetime_                                    | Today's date of the document                                                                        |
+| `logos`                    | _dictionary_                                  | Logos metadata                                                                                      |
+| `logos.main`               | _image_                                       | Main logo of the document                                                                           |
+| `logos.topleft`            | _image_                                       | Top left logo of the document                                                                       |
+| `logos.topright`           | _image_                                       | Top right logo of the document                                                                      |
+| `logos.bottomleft`         | _image_                                       | Bottom left logo of the document                                                                    |
+| `logos.bottomright`        | _image_                                       | Bottom right logo of the document                                                                   |
+| `tableof`                  | _dictionary_                                  | Table of ... settings for the document                                                              |
+| `tableof.toc`              | _boolean_                                     | Create table of contents (default: `true`)                                                          |
+| `tableof.tof`              | _boolean_                                     | Create table of figures (default: `false`)                                                          |
+| `tableof.tot`              | _boolean_                                     | Create table of tables (default: `false`)                                                           |
+| `tableof.tol`              | _boolean_                                     | Create table of listings (default: `false`)                                                         |
+| `tableof.toe`              | _boolean_                                     | Create table of equations (default: `false`)                                                        |
+| `tableof.maxdepth`         | _integer_                                     | Max depth of the table of contents (default: `3`)                                                   |
+| `gloss`                    | _boolean_                                     | Create glossary and acronyms (default: `true`)                                                      |
+| `appendix`                 | _boolean_                                     | Create appendix (default: `false`)                                                                  |
+| `bib`                      | _dictionary_                                  | Bibliography settings for the document                                                              |
+| `bib.display`              | _boolean_                                     | Display bibliography (default: `true`)                                                              |
+| `bib.path`                 | _string_                                      | Path to the bibliography file (default: `"/tail/bibliography.bib"`)                                 |
+| `bib.style`                | _string_                                      | Style of the bibliography (default: `"ieee"`)                                                       |
 
 3. Write your content in the `thesis.typ` file as well as the other files in the `main/` folder.
 
@@ -131,14 +132,14 @@ typst compile thesis.typ --input type="draft" --input lang="de"
 - [x] Glossary and Acronyms with Glossarium
 - [x] Bibliography
 - [x] Content help
-   - [x] Acknowledgements
-   - [x] Abstract
-   - [x] Introduction
-   - [x] Specification
-   - [x] Design
-   - [x] Implementation
-   - [x] Validation
-   - [x] Conclusion
+  - [x] Acknowledgements
+  - [x] Abstract
+  - [x] Introduction
+  - [x] Specification
+  - [x] Design
+  - [x] Implementation
+  - [x] Validation
+  - [x] Conclusion
 - [x] Custom title page
 - [ ] Wavedrom diagrams
 - [ ] PlantUML diagrams

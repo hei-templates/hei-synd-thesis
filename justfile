@@ -11,7 +11,7 @@ open := if os() == "linux" {
 
 project_dir   := justfile_directory()
 project_name  := file_stem(justfile_directory())
-project_tag   := "0.2.2"
+project_tag   := "0.2.3"
 
 typst_version := "typst -V"
 typst_github  := "https://github.com/typst/typst --tag v0.13.1"
@@ -86,7 +86,7 @@ preview_dir := if os() == "macos" {
 
 
 # generate changelog and tag for the current release
-@changelog-unrelease:
+@changelog-unreleased:
   git-cliff --unreleased --tag  {{project_tag}} -o CHANGELOG.md
 
 # generate changelog for latest version bump only. Append to current file
