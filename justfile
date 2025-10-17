@@ -33,6 +33,13 @@ preview_dir := if os() == "macos" {
   "~/.cache/typst/packages/preview/"
 }
 
+release_dir := if os() == "macos" {
+"~/Library/Application\\ Support/typst/packages/preview"
+} else {
+"~/.local/share/typst/packages/preview"
+}
+
+
 ##################################################
 # COMMANDS
 #
@@ -77,13 +84,26 @@ preview_dir := if os() == "macos" {
   echo "Install template locally as preview"
   mkdir -p {{preview_dir}}/{{project_name}}/{{project_tag}}
   cp -r ./* {{preview_dir}}/{{project_name}}/{{project_tag}}
-  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/guide-to-thesis.pdf
-  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/guide-to-typst.pdf
-  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/sample.png
-  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/sample.svg
-  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/justfile
-  rm {{preview_dir}}/{{project_name}}/{{project_tag}}/template/*.pdf
+  rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/guide-to-thesis.pdf
+  rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/guide-to-typst.pdf
+  rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/sample.png
+  rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/sample.svg
+  rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/justfile
+  rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/template/*.pdf
 
+# install the template as release package
+[linux]
+[macos]
+@copy-release:
+  echo "Install template as release package"
+  mkdir -p {{release_dir}}/{{project_name}}/{{project_tag}}
+  cp -r ./* {{release_dir}}/{{project_name}}/{{project_tag}}
+  rm -f {{release_dir}}/{{project_name}}/{{project_tag}}/guide-to-thesis.pdf
+  rm -f {{release_dir}}/{{project_name}}/{{project_tag}}/guide-to-typst.pdf
+  rm -f {{release_dir}}/{{project_name}}/{{project_tag}}/sample.png
+  rm -f {{release_dir}}/{{project_name}}/{{project_tag}}/sample.svg
+  rm -f {{release_dir}}/{{project_name}}/{{project_tag}}/justfile
+  rm -f {{release_dir}}/{{project_name}}/{{project_tag}}/template/*.pdf
 
 # generate changelog and tag for the current release
 @changelog-unreleased:
