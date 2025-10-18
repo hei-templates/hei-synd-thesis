@@ -74,6 +74,7 @@ release_dir := if os() == "macos" {
 [macos]
 @copy-local:
   echo "Install template locally as local"
+  echo "  {{local_dir}}/{{project_name}}/{{project_tag}}"
   mkdir -p {{local_dir}}/{{project_name}}/{{project_tag}}
   cp -r ./* {{local_dir}}/{{project_name}}/{{project_tag}}
 
@@ -82,6 +83,7 @@ release_dir := if os() == "macos" {
 [macos]
 @copy-preview:
   echo "Install template locally as preview"
+  echo "  {{preview_dir}}/{{project_name}}/{{project_tag}}"
   mkdir -p {{preview_dir}}/{{project_name}}/{{project_tag}}
   cp -r ./* {{preview_dir}}/{{project_name}}/{{project_tag}}
   rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/guide-to-thesis.pdf
@@ -96,6 +98,7 @@ release_dir := if os() == "macos" {
 [macos]
 @copy-release:
   echo "Install template as release package"
+  echo "  {{release_dir}}/{{project_name}}/{{project_tag}}"
   mkdir -p {{release_dir}}/{{project_name}}/{{project_tag}}
   cp -r ./* {{release_dir}}/{{project_name}}/{{project_tag}}
   rm -f {{release_dir}}/{{project_name}}/{{project_tag}}/guide-to-thesis.pdf
