@@ -1,33 +1,80 @@
-name: build
+name: release
 
 on:
   push:
-    tags:
-      - '*.*.*'
+    branches:
+      - main
 
 permissions:
   contents: write
 
 jobs:
-  prepare:
+  get-version:
+    uses: ./.github/workflows/_reusable-get-version.yml
+
+  check-version:
+    needs: [get-version]
     runs-on: ubuntu-latest
     outputs:
-      release_version: ${{ steps.get_version.outputs.release_version }}
+      should_release: ${{ steps.check.outputs.should_release }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Get the latest tag to define version
-        id: get_version
+      - name: Check if version needs release
+        id: check
+        env:
+          CURRENT_VERSION: ${{ needs.get-version.outputs.version }}
         run: |
-          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
-          echo "Latest tag: $LATEST_TAG"
-          echo "RELEASE_VERSION=$LATEST_TAG" >> $GITHUB_ENV
-          echo "release_version=$LATEST_TAG" >> $GITHUB_OUTPUT
+          echo "Current version: $CURRENT_VERSION"
 
-      - name: Generate a changelog
+          if git rev-parse "$CURRENT_VERSION" >/dev/null 2>&1; then
+            echo "Tag $CURRENT_VERSION already exists - no release needed"
+            echo "should_release=false" >> $GITHUB_OUTPUT
+          else
+            echo "Tag $CURRENT_VERSION does not exist - will create release"
+            echo "should_release=true" >> $GITHUB_OUTPUT
+          fi
+
+  create-tag:
+    needs: [get-version, check-version]
+    if: needs.check-version.outputs.should_release == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create and push tag
+        if: ${{ !env.ACT }}
+        env:
+          RELEASE_VERSION: ${{ needs.get-version.outputs.version }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "$RELEASE_VERSION" -m "Release $RELEASE_VERSION"
+          git push origin "$RELEASE_VERSION"
+
+  build:
+    needs: [get-version, check-version, create-tag]
+    if: needs.check-version.outputs.should_release == 'true'
+    uses: ./.github/workflows/_reusable-build.yml
+    with:
+      release_version: ${{ needs.get-version.outputs.version }}
+      build_matrix: '{"lang":["en","fr","de"],"type":["draft","final"]}'
+
+  changelog:
+    needs: [get-version, check-version, create-tag]
+    if: needs.check-version.outputs.should_release == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate changelog
         uses: orhun/git-cliff-action@v4
         with:
           config: cliff.toml
@@ -37,64 +84,37 @@ jobs:
           GITHUB_REPO: ${{ github.repository }}
 
       - name: Upload Changelog
+        if: ${{ !env.ACT }}
         uses: actions/upload-artifact@v4
         with:
           name: changelog
           path: CHANGELOG.md
 
-  build:
-    needs: [prepare]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        lang: ['en', 'fr', 'de']
-        type: ['draft', 'final']
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Typst
-        uses: typst-community/setup-typst@v4
-
-      - name: Install Package
-        env:
-          RELEASE_VERSION: ${{ needs.prepare.outputs.release_version }}
-        run: | 
-          mkdir -p ~/.cache/typst/packages/preview/hei-synd-thesis/${{ env.RELEASE_VERSION }}
-          cp -r ./ ~/.cache/typst/packages/preview/hei-synd-thesis/${{ env.RELEASE_VERSION }}
-
-      - name: Build Thesis - ${{ matrix.lang }}/${{ matrix.type }}
-        run: typst compile template/thesis.typ template/thesis-${{ needs.prepare.outputs.release_version }}-${{ matrix.lang }}_${{ matrix.type }}.pdf --input lang=${{ matrix.lang }} --input type=${{ matrix.type }}
-
-      - name: Upload PDF file
-        uses: actions/upload-artifact@v4
-        with:
-          name: Thesis-${{ needs.prepare.outputs.release_version }}-${{ matrix.lang }}_${{ matrix.type }}
-          path: template/thesis-${{ needs.prepare.outputs.release_version }}-${{ matrix.lang }}_${{ matrix.type }}.pdf
-
   release:
-    needs: [prepare, build]
+    needs: [get-version, check-version, build, changelog]
+    if: needs.check-version.outputs.should_release == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Download all artifacts
+        if: ${{ !env.ACT }}
         uses: actions/download-artifact@v4
         with:
           path: artifacts
 
-      - name: Move build artifacts to expected location
+      - name: Move build artifacts
+        if: ${{ !env.ACT }}
         run: |
           mkdir -p output
           find artifacts -name "thesis*.pdf" -type f -exec cp {} output/ \;
 
-      - name: Release
+      - name: Create GitHub Release
+        if: ${{ !env.ACT }}
         uses: softprops/action-gh-release@v1
         env:
-          RELEASE_VERSION: ${{ needs.prepare.outputs.release_version }}
+          RELEASE_VERSION: ${{ needs.get-version.outputs.version }}
         with:
           tag_name: ${{ env.RELEASE_VERSION }}
           name: "${{ env.RELEASE_VERSION }}"

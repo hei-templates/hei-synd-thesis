@@ -4,33 +4,20 @@ on:
   pull_request:
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-    outputs:
-      release_version: ${{ steps.get_version.outputs.release_version }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Get version
-        id: get_version
-        run: |
-          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
-          echo "Latest tag: $LATEST_TAG"
-          RELEASE_VERSION=$(awk -F'"' '/^version *=/ {print $2; exit}' typst.toml)
-          echo "Release version from typst.toml: $RELEASE_VERSION"
-          echo "RELEASE_VERSION=$RELEASE_VERSION" >> $GITHUB_ENV
-          echo "release_version=$RELEASE_VERSION" >> $GITHUB_OUTPUT
+  get-ref-version:
+    uses: ./.github/workflows/_reusable-get-version.yml
 
-  version:
+  check-version:
+    needs: [get-ref-version]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Check version consistency
+        env:
+          REF_VERSION: ${{ needs.get-ref-version.outputs.version }}
         run: |
           set -euo pipefail
           TYPST_TOML=$(awk -F'"' '/^version *=/ {print $2; exit}' typst.toml)
@@ -41,32 +28,16 @@ jobs:
           echo "justfile:   $JUSTFILE"
           echo "README.md:  $README"
           echo "metadata:   $METADATA"
-          if [ "$TYPST_TOML" != "$JUSTFILE" ] || [ "$TYPST_TOML" != "$README" ] || [ "$TYPST_TOML" != "$METADATA" ]; then
+          if [ "$REF_VERSION" != "$TYPST_TOML" ] || [ "$REF_VERSION" != "$JUSTFILE" ] || [ "$REF_VERSION" != "$README" ] || [ "$REF_VERSION" != "$METADATA" ]; then
             echo "Version mismatch detected!"
             exit 1
           fi
-          echo "All versions match: $TYPST_TOML"
+          echo "All versions match: $REF_VERSION"
+
 
   build:
-    needs: [prepare, version]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        lang: ["en"]
-        type: ["draft"]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Typst
-        uses: typst-community/setup-typst@v4
-
-      - name: Install Package
-        env:
-          RELEASE_VERSION: ${{ needs.prepare.outputs.release_version }}
-        run: |
-          mkdir -p ~/.cache/typst/packages/preview/hei-synd-thesis/${{ env.RELEASE_VERSION }}
-          cp -r ./ ~/.cache/typst/packages/preview/hei-synd-thesis/${{ env.RELEASE_VERSION }}
-
-      - name: Build Thesis - ${{ matrix.lang }}/${{ matrix.type }}
-        run: typst compile template/thesis.typ template/thesis-${{ needs.prepare.outputs.release_version }}-${{ matrix.lang }}_${{ matrix.type }}.pdf --input lang=${{ matrix.lang }} --input type=${{ matrix.type }}
+    needs: [get-ref-version]
+    uses: ./.github/workflows/_reusable-build.yml
+    with:
+      release_version: ${{ needs.get-ref-version.outputs.version }}
+      build_matrix: '{"lang":["en"],"type":["draft"]}'
