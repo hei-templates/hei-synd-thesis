@@ -18,6 +18,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Install fonts
+        run: |
+          # Create fonts directory
+          sudo mkdir -p /usr/share/fonts/truetype/libertinus
+          sudo mkdir -p /usr/share/fonts/truetype/fira-sans
+
+          # Download and install Libertinus Serif
+          wget -q https://github.com/alerque/libertinus/releases/download/v7.040/Libertinus-7.040.tar.xz
+          tar -xf Libertinus-7.040.tar.xz
+          sudo cp Libertinus-7.040/static/OTF/LibertinusSerif-*.otf /usr/share/fonts/truetype/libertinus/
+
+          # Download and install Fira Sans
+          wget -q https://github.com/mozilla/Fira/archive/refs/tags/4.106.zip -O fira.zip
+          unzip -q fira.zip
+          sudo cp Fira-4.106/otf/FiraSans-*.otf /usr/share/fonts/truetype/fira-sans/
+
+          # Refresh font cache
+          sudo fc-cache -f -v
+
+          # Clean up
+          rm -rf Libertinus-7.040* fira.zip Fira-4.106
+
       - name: Setup Typst
         uses: typst-community/setup-typst@v4
 
