@@ -4,3 +4,4 @@
 
 # template output pdf
 template/*.pdf
+.idea
