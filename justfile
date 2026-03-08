@@ -93,6 +93,24 @@ release_dir := if os() == "macos" {
   rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/justfile
   rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/template/*.pdf
 
+# create or update a symlink in preview package path to the current project root
+[linux]
+[macos]
+@link-preview:
+  echo "Link template in preview directory to current project root"
+  echo "  {{preview_dir}}/{{project_name}}/{{project_tag}} -> {{project_dir}}"
+  mkdir -p {{preview_dir}}/{{project_name}}
+  rm -rf {{preview_dir}}/{{project_name}}/{{project_tag}}
+  ln -s {{project_dir}} {{preview_dir}}/{{project_name}}/{{project_tag}}
+
+# remove preview symlink/folder for current project version
+[linux]
+[macos]
+@unlink-preview:
+  echo "Remove template link/folder from preview directory"
+  echo "  {{preview_dir}}/{{project_name}}/{{project_tag}}"
+  rm -rf {{preview_dir}}/{{project_name}}/{{project_tag}}
+
 # install the template as release package
 [linux]
 [macos]
