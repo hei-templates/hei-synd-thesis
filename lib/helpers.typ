@@ -11,17 +11,17 @@
 // Fancy pretty print with line numbers and stuff
 #import "@preview/codelst:2.0.2": sourcecode
 #import "@preview/codly:1.3.0": *
-#import "@preview/codly-languages:0.1.8": *
+#import "@preview/codly-languages:0.1.10": *
 // Glossarium for glossary
-#import "@preview/glossarium:0.5.9": *
+#import "@preview/glossarium:0.5.10": *
 // Wordometer for word and character count
 #import "@preview/wordometer:0.1.5": word-count
 // add datetime support for other languages
-#import "@preview/icu-datetime:0.2.0"
+#import "@preview/icu-datetime:0.2.1"
 // List with Checkmarks
 #import "@preview/cheq:0.3.0": checklist
 // PDF integration
-#import "@preview/muchpdf:0.1.1": muchpdf
+#import "@preview/muchpdf:0.1.2": muchpdf
 
 //-------------------------------------
 // Sourcecode modifs
