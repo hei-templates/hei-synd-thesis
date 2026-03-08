@@ -350,18 +350,27 @@
   }
 
   // Table of ...
-  pagebreak()
-  toc(
-    tableof: tableof,
-    titles: (
-      toc: i18n("toc-title", lang: option.lang),
-      tot: i18n("tot-title", lang: option.lang),
-      tof: i18n("tof-title", lang: option.lang),
-      tol: i18n("tol-title", lang: option.lang),
-      toe: i18n("toe-title", lang: option.lang),
-    ),
-    before: <sec:glossary>
-  )
+  let display_table = false
+  if tableof.toc {display_table = true}
+  if tableof.tot {display_table = true}
+  if tableof.tof {display_table = true}
+  if tableof.tol {display_table = true}
+  if tableof.toe {display_table = true}
+  if display_table {
+    pagebreak()
+    toc(
+      tableof: tableof,
+      titles: (
+        toc: i18n("toc-title", lang: option.lang),
+        tot: i18n("tot-title", lang: option.lang),
+        tof: i18n("tof-title", lang: option.lang),
+        tol: i18n("tol-title", lang: option.lang),
+        toe: i18n("toe-title", lang: option.lang),
+      ),
+      before: <sec:glossary>
+    )
+    
+  }
 
   // Main body
   set par(justify: true)
