@@ -76,24 +76,6 @@
     icon: icon-check,
   )[#body]
 }
-#let item-circle(
-  height: normal,
-  body
-) = {
-  item-list(
-    height: height,
-    icon: icon-circle,
-  )[#body]
-}
-#let item-square(
-  height: normal,
-  body
-) = {
-  item-list(
-    height: height,
-    icon: icon-square,
-  )[#body]
-}
 #let item-file(
   height: normal,
   body
