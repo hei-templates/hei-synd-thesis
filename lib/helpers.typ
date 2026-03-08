@@ -319,10 +319,10 @@
   let i = 1
   if items != none {
     for item in items {
-       if item != none {
+      if item != none {
         if "name" in item {
           if i > 1 {
-            if multiline == true {
+            if multiline {
               if items.len() > 2 {
                 [\ ]
               } else {
@@ -333,8 +333,8 @@
             }
           }
           i = i + 1
-          if "institute" in item{
-            [#item.name#super(repr(item.institute))]
+          if "affiliation" in item{
+            [#item.name#super(repr(item.affiliation))]
           } else {
             [#item.name]
           }
@@ -344,7 +344,7 @@
   }
 }
 
-#let enumerating-institutes(
+#let enumerating-affiliation(
   items: none,
 ) = {
   let i = 1
