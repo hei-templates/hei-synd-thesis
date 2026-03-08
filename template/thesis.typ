@@ -17,6 +17,7 @@
   summary-page: summary-page,
   professor: professor,
   expert: expert,
+  // partner: expert,
   school: school,
   date: date,
   tableof: tableof,

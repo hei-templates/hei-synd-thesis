@@ -3,7 +3,46 @@
 // Author     : Silvan Zahno
 //
 #import "helpers.typ": *
-#import "pages-thesis.typ": *
+
+#let sanitize-author = apply-dict-defaults.with(
+  defaults: (
+    gender      : none,
+    name        : none,
+    email       : none,
+    degree      : none,
+    affiliation : "HEI-Vs",
+    place       : "Sion",
+    url         : none,
+  ),
+  required: ("name",)
+)
+
+#let sanitize-professor = apply-dict-defaults.with(
+  defaults: (
+    name: none,
+    email: none,
+    affiliation: "HEI-Vs",
+  ),
+  required: ("name",)
+)
+
+#let sanitize-expert = apply-dict-defaults.with(
+  defaults: (
+    affiliation: none,
+    name: none,
+    email: none,
+  ),
+  required: ("name", "email")
+)
+
+#let sanitize-partner = apply-dict-defaults.with(
+  defaults: (
+    affiliation: none,
+    name: none,
+    email: none,
+  ),
+  required: ("name",)
+)
 
 #let thesis(
   option: (
@@ -35,8 +74,9 @@
     objective: none,
     content: none,
   ),
-  professor: none,
-  expert: none,
+  professor: (),
+  expert: (),
+  partner: (),
   school: none,
   date: (
     submission: datetime.today(),
@@ -66,41 +106,12 @@
   // Sanitize inputs
   doc.title    = doc.at("title", default: none)
   doc.subtitle = doc.at("subtitle", default: none)
-  let empty-author = (
-    gender: none,
-    name: none,
-    email: none,
-    degree: none,
-    affiliation: none,
-    place: none,
-    url: none,
-    signature: none,
-  )
-  doc.author = doc.at("author", default: ())
-  if type(doc.author) != array {
-    panic("Invalid metadata: doc.author must be an array of author dictionaries.")
-  }
-  doc.author = if doc.author == none or doc.author.len() == 0 {
-    (empty-author,)
-  } else {
-    doc.author
-  }
-  doc.author = doc.author.map((author) => {
-    let sanitized-author = if author == none {
-      empty-author
-    } else {
-      author
-    }
-    sanitized-author.gender = sanitized-author.at("gender", default: none)
-    sanitized-author.name = sanitized-author.at("name", default: none)
-    sanitized-author.email = sanitized-author.at("email", default: none)
-    sanitized-author.degree = sanitized-author.at("degree", default: none)
-    sanitized-author.affiliation = sanitized-author.at("affiliation", default: none)
-    sanitized-author.place = sanitized-author.at("place", default: none)
-    sanitized-author.url = sanitized-author.at("url", default: none)
-    sanitized-author.signature = sanitized-author.at("signature", default: none)
-    sanitized-author
-  })
+  
+  doc.author = doc.author.map(sanitize-author)
+  professor = professor.map(sanitize-professor)
+  expert = expert.map(sanitize-expert)
+  partner = partner.map(sanitize-partner)
+
   doc.keywords = doc.at("keywords", default: ("Typst", "Template", "Thesis", "HEI-Vs", "Systems Engineering"))
   doc.version  = doc.at("version", default: "v0.1.0")
   summary-page = if summary-page == none {
@@ -120,30 +131,8 @@
   } else {
     summary-page
   }
-  professor = if professor == none {
-    (
-      name: none,
-      email: none,
-      affiliation: none,
-    )
-  } else {
-    professor
-  }
-  professor.name = professor.at("name", default: none)
-  professor.email = professor.at("email", default: none)
-  professor.affiliation = professor.at("affiliation", default: none)
-  expert = if expert == none {
-    (
-      name: none,
-      email: none,
-      affiliation: none,
-    )
-  } else {
-    expert
-  }
-  expert.name = expert.at("name", default: none)
-  expert.email = expert.at("email", default: none)
-  expert.affiliation = expert.at("affiliation", default: none)
+
+  
   school = if school == none {
     (
       name: none,
@@ -346,7 +335,7 @@
       degree: school.orientation,
       field: school.specialisation,
       professor: professor,
-      //partner: partner,
+      partner: partner,
       logos: (
         main: summary-page.logo,
         topleft: logos.topleft,

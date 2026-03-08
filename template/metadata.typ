@@ -58,15 +58,19 @@
   address: [HES-SO Valais Wallis • rue de l'Industrie 23 • 1950 Sion \ +41 58 606 85 11 • #link("mailto"+"info@hevs.ch")[info\@hevs.ch] • #link("www.hevs.ch")[www.hevs.ch]]
 )
 
-#let professor= (
-  affiliation: "HEI-Vs",
-  name: "Prof. Silvan Zahno",
-  email: "silvan.zahno@hevs.ch",
+#let professor = (
+  (
+    affiliation: "HEI-Vs",
+    name: "Prof. Silvan Zahno",
+    email: "silvan.zahno@hevs.ch",
+  ),
 )
-#let expert= (
-  affiliation: "Company",
-  name: "Expert Name",
-  email: "expert@domain.ch",
+#let expert = (
+  (
+    affiliation: "Company",
+    name: "Expert Name",
+    email: "expert@domain.ch",
+  ),
 )
 #let school= (
   name: none,
