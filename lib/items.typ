@@ -22,102 +22,14 @@
   }
 }
 
-#let item-circle(
-  height: normal,
-  body
-) = {
-  item-list(
-    height: height,
-    icon: icon-circle,
-  )[#body]
-}
-#let item-square(
-  height: normal,
-  body
-) = {
-  item-list(
-    height: height,
-    icon: icon-square,
-  )[#body]
-}
-#let item-checkbadge(
-  height: normal,
-  body
-) = {
-  item-list(
-    height: height,
-    icon: icon-check-badge,
-  )[#body]
-}
-#let item-checkcircle(
-  height: normal,
-  body,
-) = {
-  item-list(
-    height: height,
-    icon: icon-check-circle,
-  )[#body]
-}
-#let item-checksquare(
-  height: normal,
-  body
-) = {
-  item-list(
-    height: height,
-    icon: icon-check-square,
-  )[#body]
-}
-#let item-check(
-  height: normal,
-  body
-) = {
-  item-list(
-    height: height,
-    icon: icon-check,
-  )[#body]
-}
-#let item-file(
-  height: normal,
-  body
-) = {
-  item-list(
-    height: height,
-    icon: icon-file,
-  )[#body]
-}
-#let item-folder(
-  height: normal,
-  body
-) = {
-  item-list(
-    height: height,
-    icon: icon-folder,
-  )[#body]
-}
-#let item-xcircle(
-  height: normal,
-  body
-) = {
-  item-list(
-    height: height,
-    icon: icon-x-circle,
-  )[#body]
-}
-#let item-xsquare(
-  height: normal,
-  body
-) = {
-  item-list(
-    height: height,
-    icon: icon-x-square,
-  )[#body]
-}
-#let item-x(
-  height: normal,
-  body
-) = {
-  item-list(
-    height: height,
-    icon: icon-x,
-  )[#body]
-}
+#let item-circle = item-list.with(icon: icon-circle)
+#let item-square = item-list.with(icon: icon-square)
+#let item-checkbadge = item-list.with(icon: icon-check-badge)
+#let item-checkcircle = item-list.with(icon: icon-check-circle)
+#let item-checksquare = item-list.with(icon: icon-check-square)
+#let item-check = item-list.with(icon: icon-check)
+#let item-file = item-list.with(icon: icon-file)
+#let item-folder = item-list.with(icon: icon-folder)
+#let item-xcircle = item-list.with(icon: icon-x-circle)
+#let item-xsquare = item-list.with(icon: icon-x-square)
+#let item-x = item-list.with(icon: icon-x)
