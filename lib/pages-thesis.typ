@@ -26,7 +26,7 @@
     signature   : none,
   ),
   professor: none,
-  expert:none,
+  expert: none,
   logos: (
     topleft: none,
     topright: none,
@@ -39,9 +39,9 @@
 
   set page(
     margin: (
-      top:3.0cm,
-      bottom:3.0cm,
-      rest:3.5cm
+      top: 3.0cm,
+      bottom: 3.0cm,
+      rest: 3.5cm
     )
   )
   //-------------------------------------
@@ -53,25 +53,25 @@
       //v(0.5fr)
       // Degree Programme
       if school.orientation != none {
-        align(center, [#text(size:larger,
+        align(center, text(size: larger,
           i18n("degree-programme", lang: lang)
-        )])
+        ))
         v(1em)
       }
 
       // Orientation
       if school.orientation != none {
-        align(center, [#text(size:larger,
+        align(center, text(size: larger,
           school.orientation
-        )])
+        ))
         v(1em)
       }
 
       // Specialisation
       if school.specialisation != none {
-        align(center, [#text(size:large,
+        align(center, text(size: large,
           [#i18n("major", lang: lang) #school.specialisation]
-        )])
+        ))
         v(2em)
       }
     }
@@ -82,35 +82,35 @@
 
     // BACHELOR'S THESIS / Midterm Report
     if template == "thesis" {
-      align(center, [#text(size:huge,
+      align(center, text(size: huge,
         [*#i18n("thesis-title", lang: lang)*]
-      )])
+      ))
       v(1em)
     } else if template == "midterm"{
-      align(center, [#text(size:huge,
+      align(center, text(size: huge,
         [*#i18n("midterm-title", lang: lang)*]
-      )])
+      ))
       v(1em)
     }
 
     // DIPLOMA YEAR
-    align(center, [#text(size:huge,
+    align(center, text(size: huge,
       [*#i18n("diploma", lang: lang) #date.display("[year]")*]
-    )])
+    ))
     v(1em)
 
     // AUTHORs
-    align(center, [#text(size:large, [
-      #if type(author) == array [
-        #enumerating-authors(
+    align(center, text(size: large, {
+      if type(author) == array {
+        enumerating-authors(
           items: author,
           multiline: true,
         )
-      ] else [
-        #author.name
-      ]
-      #v(2em)
-    ])])
+      } else {
+        author.name
+      }
+      v(2em)
+    }))
 
     titlebox(
       title: title,
@@ -193,22 +193,17 @@
       #logos.topleft//#image(, width: 7.5cm)
     ],
     footer-descent: 0cm,
-    footer: [
-      #table(
-        columns: (50%, 50%),
-        stroke: none,
-        align: (left + horizon, right + horizon),
-        [
-          #if address != none {
-            option-style()[#address]
-          } else {[
-            #option-style()[HES-SO Valais Wallis • rue de l'Industrie 23 • 1950 Sion \ +41 58 606 85 11 • #link("mailto"+"info@hevs.ch")[info\@hevs.ch] • #link("www.hevs.ch")[www.hevs.ch]]
-          ]}
-        ],[
-          #logos.bottomright
-        ],
-      )
-    ],
+    footer: table(
+      columns: (50%, 50%),
+      stroke: none,
+      align: (left + horizon, right + horizon),
+      if address != none {
+        option-style()[#address]
+      } else {
+        option-style()[HES-SO Valais Wallis • rue de l'Industrie 23 • 1950 Sion \ +41 58 606 85 11 • #link("mailto"+"info@hevs.ch")[info\@hevs.ch] • #link("www.hevs.ch")[www.hevs.ch]]
+      },
+      logos.bottomright,
+    ),
   )
 
   set text(size: 9pt)
@@ -228,7 +223,7 @@
       #v(1cm)
 
       #align(center)[
-        #heading(level: 3, numbering:none, outlined: false)[
+        #heading(level: 3, numbering: none, outlined: false)[
           #text(15pt)[
             #i18n("thesis-title", lang: lang)\ | #h(0.3cm) #year #h(0.3cm) |
           ]
@@ -265,9 +260,11 @@
         _#[#partner.affiliation]_
       ]}
 
-    ],[],[
+    ],
+    [],
+    [
       #align(left, text(15pt)[
-        #heading(numbering:none, outlined: false)[#title]
+        #heading(numbering: none, outlined: false)[#title]
       ])
       #table(
         columns: (0cm, 3.5cm, 1fr),
@@ -275,7 +272,8 @@
         align: left + horizon,
         [
           //#square(size: 0.7cm, fill: blue.lighten(70%))
-        ],[
+        ],
+        [
           #set text(
             size: 12pt,
             fill: gray.darken(50%),
@@ -289,7 +287,8 @@
           }
 
           #graduate_l
-        ],[
+        ],
+        [
           #set text(size: 10pt)
           #author.name
         ]
@@ -297,21 +296,19 @@
 
       #v(1.5cm)
 
-      #heading(level: 3, numbering:none, outlined: false)[
+      #heading(level: 3, numbering: none, outlined: false)[
         #text(12pt)[#i18n("objective", lang: lang)]
       ]
 
       #if objective == none {
-        [
-          #i18n("objective-text")
-        ]
+        i18n("objective-text")
       } else {
         objective
       }
 
       #v(0.6cm)
 
-      #heading(level: 3, numbering:none, outlined: false)[
+      #heading(level: 3, numbering: none, outlined: false)[
         #text(12pt)[#i18n("methods-experiences-results", lang: lang)]
       ]
 
@@ -325,9 +322,9 @@
   date: none,
   lang: "en",
 ) = {
-  heading(numbering:none, outlined: false)[#i18n("report-info", lang: lang)]
+  heading(numbering: none, outlined: false)[#i18n("report-info", lang: lang)]
   v(2em)
-  heading(numbering:none, outlined: false)[*#i18n("contact-info", lang: lang)*]
+  heading(numbering: none, outlined: false)[*#i18n("contact-info", lang: lang)*]
 
   let author_l = if author.gender == "feminin" {
     i18n("author-f", lang: lang)
@@ -347,15 +344,14 @@
     columns: (auto, auto),
     stroke: none,
     align: left + top,
-    table.cell(rowspan: 3)[#if author.email != none {[#author_l:]}], [#author.name],
+    table.cell(rowspan: 3)[#if author.email != none [#author_l:]], author.name,
     if lang == "fr" {
       [#if author.degree != none {student_l} #author.degree]
     } else {
       [#author.degree #if author.degree != none {student_l}]
     },
-
-    [#author.affiliation],
-    [#if author.email != none {[#i18n("email", lang: lang):]}], [#link("mailto:author.email")[#author.email]],
+    author.affiliation,
+    if author.email != none [#i18n("email", lang: lang):], link("mailto:author.email")[#author.email],
   )
 
   v(5em)
@@ -366,17 +362,17 @@
 
   table(
     stroke: none,
-    columns: (auto,auto),
+    columns: (auto, auto),
     align: left + horizon,
-    [#i18n("declaration-signature-prefix", lang: lang)], [#author.place#if author.place != none{[,]} #date.display("[day].[month].[year]")],
-    [#i18n("declaration-signature", lang: lang)],
-    if author.signature != none {[
-      #v(0.5cm)
-      #pad(x: 2.5em, author.signature)
-      #line(start: (0cm,-0.7cm),length:5cm)
-    ]} else {[
-      #line(start: (0cm,1.5cm),length:7cm)
-    ]},
+    i18n("declaration-signature-prefix", lang: lang), [#author.place#if author.place != none{[,]} #date.display("[day].[month].[year]")],
+    i18n("declaration-signature", lang: lang),
+    if author.signature != none {
+      v(0.5cm)
+      pad(x: 2.5em, author.signature)
+      line(start: (0cm, -0.7cm), length: 5cm)
+    } else {
+      line(start: (0cm, 1.5cm), length: 7cm)
+    },
   )
 }
 
