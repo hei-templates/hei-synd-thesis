@@ -110,138 +110,40 @@
   }
 }
 
-#let infobox(
-  width: 100%,
-  radius: 4pt,
-  border: 4pt,
-  inset:10pt,
-  outset: -10pt,
-  body
-) = {
-  iconbox(
-    width: width,
-    radius: radius,
-    border: border,
-    inset: inset,
-    outset: outset,
-    linecolor: color-info,
-    icon: icon-info,
-  )[#body]
-}
+#let infobox = iconbox.with(
+  linecolor: color-info,
+  icon: icon-info,
+)
 
-#let warningbox(
-  width: 100%,
-  radius: 4pt,
-  border: 4pt,
-  inset:10pt,
-  outset: -10pt,
-  body
-) = {
-  iconbox(
-    width: width,
-    radius: radius,
-    border: border,
-    inset: inset,
-    outset: outset,
-    linecolor: color-warning,
-    icon: icon-warning,
-  )[#body]
-}
+#let warningbox = iconbox.with(
+  linecolor: color-warning,
+  icon: icon-warning,
+)
 
-#let ideabox(
-  width: 100%,
-  radius: 4pt,
-  border: 4pt,
-  inset:10pt,
-  outset: -10pt,
-  body
-) = {
-  iconbox(
-    width: width,
-    radius: radius,
-    border: border,
-    inset: inset,
-    outset: outset,
-    linecolor: color-idea,
-    icon: icon-idea
-  )[#body]
-}
+#let ideabox = iconbox.with(
+  linecolor: color-idea,
+  icon: icon-idea
+)
 
-#let firebox(
-  width: 100%,
-  radius: 4pt,
-  border: 4pt,
-  inset:10pt,
-  outset: -10pt,
-  body
-) = {
-  iconbox(
-    width: width,
-    radius: radius,
-    border: border,
-    inset: inset,
-    outset: outset,
-    linecolor: color-fire,
-    icon: icon-fire,
-  )[#body]
-}
+#let firebox = iconbox.with(
+  linecolor: color-fire,
+  icon: icon-fire,
+)
 
-#let importantbox(
-  width: 100%,
-  radius: 4pt,
-  border: 4pt,
-  inset:10pt,
-  outset: -10pt,
-  body
-) = {
-  iconbox(
-    width: width,
-    radius: radius,
-    border: border,
-    inset: inset,
-    outset: outset,
-    linecolor: color-important,
-    icon: icon-important,
-  )[#body]
-}
+#let importantbox = iconbox.with(
+  linecolor: color-important,
+  icon: icon-important,
+)
 
-#let rocketbox(
-  width: 100%,
-  radius: 4pt,
-  border: 4pt,
-  inset:10pt,
-  outset: -10pt,
-  body
-) = {
-  iconbox(
-    width: width,
-    radius: radius,
-    border: border,
-    inset: inset,
-    outset: outset,
-    linecolor: color-rocket,
-    icon: icon-rocket,
-  )[#body]
-}
+#let rocketbox = iconbox.with(
+  linecolor: color-rocket,
+  icon: icon-rocket,
+)
 
-#let todobox(
-  width: 100%,
-  radius: 4pt,
-  border: 4pt,
-  inset:10pt,
-  outset: -10pt,
-  body
-) = {
-  iconbox(
-    width: width,
-    radius: radius,
-    border: border,
-    inset: inset,
-    outset: outset,
-    linecolor: color-todo,
-    icon: icon-todo,
-  )[#body]
-}
+#let todobox = iconbox.with(
+  linecolor: color-todo,
+  icon: icon-todo,
+)
 
 // Creating nice looking information boxes with different headings
 #let colorbox(
