@@ -352,24 +352,22 @@
   bold: false,
   italic: false,
 ) = {
-  let i = 1
   if items != none {
-    for item in items {
+    for (i, item) in items.enumerate() {
       if item != none {
+        if i > 0 {
+          [, ]
+        }
         if bold == true and italic == true {
-          [#text(style: "italic")[*#item*]]
+          text(style: "italic")[*#item*]
         } else if bold == true {
           [*#item*]
         } else if italic == true {
-          [#text(style: "italic")[#item]]
+          text(style: "italic")[#item]
         } else {
           [#item]
         }
-        if i < items.len() {
-          [, ]
-        }
       }
-      i = i + 1
     }
   }
 }
@@ -378,15 +376,13 @@
   links: none,
 ) = {
   if names != none {
-    let i = 0
-    for name in names {
+    for (i, name) in names.enumerate() {
       if name != none {
-        [#link(links.at(i))[#name]]
-        if i+1 < names.len() {
+        if i > 0 {
           [, ]
         }
+        link(links.at(i))[#name]
       }
-      i = i + 1
     }
   }
 }
@@ -395,15 +391,13 @@
   links: none,
 ) = {
   if names != none {
-    let i = 0
-    for name in names {
+    for (i, name) in names.enumerate() {
       if name != none {
-        [#link(links.at(i))[#name]]
-        if i+1 < names.len() {
+        if i > 0 {
           [ \ ]
         }
+        link(links.at(i))[#name]
       }
-      i = i + 1
     }
   }
 }
@@ -412,15 +406,13 @@
   emails: none,
 ) = {
   if names != none {
-    let i = 0
-    for name in names {
+    for (i, name) in names.enumerate() {
       if name != none {
-        [#link("mailto:"+emails.at(i))[#name]]
-        if i+1 < names.len() {
-        [, ]
+        if i > 0 {
+          [, ]
         }
+        link("mailto:"+emails.at(i))[#name]
       }
-      i = i + 1
     }
   }
 }
@@ -429,15 +421,13 @@
   emails: none,
 ) = {
   if names != none {
-    let i = 0
-    for name in names {
+    for (i, name) in names.enumerate() {
       if name != none {
-        [#link("mailto:"+emails.at(i))[#name]]
-        if i+1 < names.len() {
-        [ \ ]
+        if i > 0 {
+          [ \ ]
         }
+        link("mailto:"+emails.at(i))[#name]
       }
-      i = i + 1
     }
   }
 }
