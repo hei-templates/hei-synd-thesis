@@ -114,6 +114,27 @@
 })
 
 //-------------------------------------
+// Sanitization helper function
+// 
+#let apply-dict-defaults(
+  dict,
+  defaults: (:),
+  required: ()
+) = {
+  let result = defaults + dict
+  if type(required) != array {
+    required = (required,)
+  }
+  for r in required {
+    assert(
+      result.at(r, default: none) != none,
+      message: "Missing required field: " + r
+    )
+  }
+  return result
+}
+
+//-------------------------------------
 // Specifications
 //
 #let full-page(path) = {

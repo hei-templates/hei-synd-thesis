@@ -4,6 +4,25 @@
 //
 #import "helpers.typ": *
 
+#let format-email(email) = {
+  if email == none {
+    return none
+  }
+  return link("mailto:" + email)
+}
+
+#let page-title-contact-block(person) = {
+  if person == none {
+    return []
+  }
+  let fields = (
+    person.affiliation,
+    person.name,
+    format-email(person.email)
+  ).filter(v => v != none)
+  return fields.join[, ]
+}
+
 #let page-title-thesis(
   title: none,
   subtitle: none,
@@ -126,14 +145,14 @@
 
   let content-down = [
     #v(2em)
-    #if professor != none and (professor.affiliation != none or professor.name != none or professor.email != none ) [
+    #if professor != () [
       #i18n("professor", lang: lang)\
-      #professor.affiliation#if (professor.affiliation != none and professor.name != none) or (professor.affiliation != none and professor.email != none) {[, ]}#professor.name#if professor.name != none and professor.email != none {[,]} #link("mailto:professor.email")[#professor.email]
+      #professor.map(page-title-contact-block).join(linebreak())
       \ \
     ]
-    #if expert != none and (expert.affiliation != none or expert.name != none or expert.email != none ) [
+    #if expert != () [
       #i18n("expert", lang: lang)\
-      #expert.affiliation#if (expert.affiliation != none and expert.name != none) or (expert.affiliation != none and expert.email != none) {[, ]}#expert.name#if expert.name != none and expert.email != none {[,]} #link("mailto:expert.email")[#expert.email]
+      #expert.map(page-title-contact-block).join(linebreak())
       \ \
     ]
     #if template == "thesis" [
@@ -181,6 +200,17 @@
     set text(size: 10pt)
     name
   } )
+}
+
+#let summary-contact-block(person) = {
+  if person == none {
+    return []
+  }
+  let fields = (
+    person.name,
+    format-email(person.email)
+  ).filter(v => v != none)
+  return fields.join(linebreak())
 }
 
 #let summary(
@@ -265,18 +295,16 @@
 
       #v(0.6cm)
 
-      #if professor != none {[
+      #if professor != () [
         #i18n("professor", lang: lang)\
-        _#[#professor.name]_\
-        _#[#professor.email]_
+        #professor.map(summary-contact-block).join(v(0.5em))
         #v(0.6cm)
-      ]}
+      ]
 
-      #if partner != none {[
+      #if partner != () [
         #i18n("partner", lang: lang)\
-        _#[#partner.name]_\
-        _#[#partner.affiliation]_
-      ]}
+        #partner.map(summary-contact-block).join(v(0.5em))
+      ]
 
     ],
     [],
