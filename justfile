@@ -30,7 +30,7 @@ local_dir := if os() == "macos" {
 preview_dir := if os() == "macos" {
   "~/Library/Caches/typst/packages/preview"
 } else {
-  "~/.cache/typst/packages/preview/"
+  "~/.cache/typst/packages/preview"
 }
 
 release_dir := if os() == "macos" {
