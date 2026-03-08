@@ -58,6 +58,7 @@
   title-extra-content-top: none,
   title-extra-content-bottom: none,
   custom-title-page: none,
+  disable-reportinfo: false,
   body
 ) = {
   // Sanitize inputs
@@ -339,12 +340,14 @@
   }
 
   // Report info
-  pagebreak()
-  page-reportinfo(
-    author: doc.author,
-    date: date.today,
-    lang: option.lang,
-  )
+  if disable-reportinfo == false {
+    pagebreak()
+    page-reportinfo(
+      author: doc.author,
+      date: date.today,
+      lang: option.lang,
+    )
+  }
 
   // Table of ...
   pagebreak()
