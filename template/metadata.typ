@@ -73,6 +73,7 @@
 )
 #if option.lang == "de" {
   school.name = "Hochschule für Ingenieurwissenschaften Wallis, HES-SO"
+  school.shortname = "HEI-Vs"
   school.orientation = "Systemtechnik"
   school.specialisation = "Infotronics"
 } else if option.lang == "fr" {
