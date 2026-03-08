@@ -326,20 +326,9 @@
   v(2em)
   heading(numbering: none, outlined: false)[*#i18n("contact-info", lang: lang)*]
 
-  let author_l = if author.gender == "feminin" {
-    i18n("author-f", lang: lang)
-  } else if author.gender == "inclusive" {
-    i18n("author-i", lang: lang)
-  } else {
-    i18n("author", lang: lang)
-  }
-  let student_l = if author.gender == "feminin" {
-    i18n("student-f", lang: lang)
-  } else if author.gender == "inclusive" {
-    i18n("student-i", lang: lang)
-  } else {
-    i18n("student", lang: lang)
-  }
+  let author_l = get-gendered-label(author.gender, "author", lang: lang)
+  let student_l = get-gendered-label(author.gender, "student", lang: lang)
+  
   table(
     columns: (auto, auto),
     stroke: none,

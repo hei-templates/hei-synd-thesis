@@ -49,7 +49,8 @@
 #let i18n(
   key,
   lang: "en",
-  extra-i18n: none) = {
+  extra-i18n: none
+) = {
   if type(extra-i18n) == dictionary {
     for (lng, keys) in extra-i18n {
       if not lng in langs {
@@ -86,6 +87,21 @@
     auto
   }
 }
+
+#let get-gendered-label(
+  gender,
+  key-base,
+  lang: "en",
+) = {
+  if gender == "feminin" {
+    i18n(key-base + "-f", lang: lang)
+  } else if gender == "inclusive" {
+    i18n(key-base + "-i", lang: lang)
+  } else {
+    i18n(key-base, lang: lang)
+  }
+}
+
 //-------------------------------------
 // Reference helper function
 //
