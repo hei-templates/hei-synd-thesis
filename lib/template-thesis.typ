@@ -3,6 +3,7 @@
 // Author     : Silvan Zahno
 //
 #import "helpers.typ": *
+#import "pages-thesis.typ": page-title-thesis, summary, page-reportinfo, page-pdf
 
 #let sanitize-author = apply-dict-defaults.with(
   defaults: (
