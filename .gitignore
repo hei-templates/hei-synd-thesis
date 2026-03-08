@@ -4,3 +4,8 @@
 
 # template output pdf
 template/*.pdf
+
+# IDE
+.zed
+.vscode
+.idea
