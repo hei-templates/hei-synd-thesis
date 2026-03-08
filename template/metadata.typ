@@ -28,14 +28,16 @@
   title    : "Thesis Template",
   subtitle : "Longer Subtitle",
   author: (
-    gender      : "masculin",  // ["masculin"|"feminin"|"inclusive"]
-    name        : "Firstname Lastname",
-    email       : "firstname.lastname@hevs.ch",
-    degree      : "Bachelor",
-    affiliation : "HEI-Vs",
-    place       : "Sion",
-    url         : "https://synd.hevs.io",
-    signature   : image("/resources/img/signature.svg", width:3cm),
+    (
+      gender      : "masculin",  // ["masculin"|"feminin"|"inclusive"]
+      name        : "Firstname Lastname",
+      email       : "firstname.lastname@hevs.ch",
+      degree      : "Bachelor",
+      affiliation : "HEI-Vs",
+      place       : "Sion",
+      url         : "https://synd.hevs.io",
+      signature   : image("/resources/img/signature.svg", width:3cm),
+    ),
   ),
   keywords : ("HEI-Vs", "Systems Engineering", "Infotronics", "Thesis", "Template"),
   version  : "v0.1.0",

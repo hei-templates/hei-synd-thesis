@@ -15,14 +15,16 @@
     title    : "Thesis Template",
     subtitle : "Longer Subtitle",
     author: (
-      gender      : "masculin",
-      name        : "Firstname Lastname",
-      email       : "firstname.lastname@hevs.ch",
-      degree      : "Bachelor",
-      affiliation : "HEI-Vs",
-      place       : "Sion",
-      url         : "https://synd.hevs.io",
-      signature   : none,
+      (
+        gender      : "masculin",
+        name        : "Firstname Lastname",
+        email       : "firstname.lastname@hevs.ch",
+        degree      : "Bachelor",
+        affiliation : "HEI-Vs",
+        place       : "Sion",
+        url         : "https://synd.hevs.io",
+        signature   : none,
+      ),
     ),
     keywords : ("HEI-Vs", "Systems Engineering", "Infotronics", "Thesis", "Template"),
     version  : "v0.1.0",
@@ -64,26 +66,41 @@
   // Sanitize inputs
   doc.title    = doc.at("title", default: none)
   doc.subtitle = doc.at("subtitle", default: none)
-  doc.author   = if doc.at("author", default: none) == none {
-    (
-      name: none,
-      email: none,
-      degree: none,
-      affiliation: none,
-      place: none,
-      url: none,
-      signature: none
-    )
+  let empty-author = (
+    gender: none,
+    name: none,
+    email: none,
+    degree: none,
+    affiliation: none,
+    place: none,
+    url: none,
+    signature: none,
+  )
+  doc.author = doc.at("author", default: ())
+  if type(doc.author) != array {
+    panic("Invalid metadata: doc.author must be an array of author dictionaries.")
+  }
+  doc.author = if doc.author == none or doc.author.len() == 0 {
+    (empty-author,)
   } else {
     doc.author
   }
-  doc.author.name = doc.author.at("name", default: none)
-  doc.author.email = doc.author.at("email", default: none)
-  doc.author.degree = doc.author.at("degree", default: none)
-  doc.author.affiliation = doc.author.at("affiliation", default: none)
-  doc.author.place = doc.author.at("place", default: none)
-  doc.author.url = doc.author.at("url", default: none)
-  doc.author.signature = doc.author.at("signature", default: none)
+  doc.author = doc.author.map((author) => {
+    let sanitized-author = if author == none {
+      empty-author
+    } else {
+      author
+    }
+    sanitized-author.gender = sanitized-author.at("gender", default: none)
+    sanitized-author.name = sanitized-author.at("name", default: none)
+    sanitized-author.email = sanitized-author.at("email", default: none)
+    sanitized-author.degree = sanitized-author.at("degree", default: none)
+    sanitized-author.affiliation = sanitized-author.at("affiliation", default: none)
+    sanitized-author.place = sanitized-author.at("place", default: none)
+    sanitized-author.url = sanitized-author.at("url", default: none)
+    sanitized-author.signature = sanitized-author.at("signature", default: none)
+    sanitized-author
+  })
   doc.keywords = doc.at("keywords", default: ("Typst", "Template", "Thesis", "HEI-Vs", "Systems Engineering"))
   doc.version  = doc.at("version", default: "v0.1.0")
   summary-page = if summary-page == none {
@@ -187,7 +204,9 @@
   logos.bottomright = logos.at("bottomright", default: none)
   // basic properties
   set document(
-    author: if doc.author.name != none {doc.author.name} else {""},
+    author: doc.author
+      .map((author) => author.name)
+      .filter((name) => name != none),
     title: doc.title,
     keywords: doc.keywords,
     date: date.today
@@ -340,6 +359,7 @@
   }
 
   // Report info
+  if doc.author.len() > 1 {disable-reportinfo = true}
   if disable-reportinfo == false {
     pagebreak()
     page-reportinfo(
