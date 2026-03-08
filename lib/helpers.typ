@@ -30,11 +30,11 @@
   frame: block.with(
     fill: code-bg,
     stroke: (left: 3pt + luma(80%), rest: 0.1pt + code-border),
-    radius: (left:0pt, right: 4pt),
-    inset: (left:7pt, rest:10pt),
+    radius: (left: 0pt, right: 4pt),
+    inset: (left: 7pt, rest: 10pt),
   ),
   numbering: "1",
-  numbers-style: (lno) => text(luma(210), size:7pt, lno + h(0.3em)),
+  numbers-style: (lno) => text(luma(210), size: 7pt, lno + h(0.3em)),
   numbers-step: 1,
   numbers-width: -1.2em,
 )
@@ -73,28 +73,28 @@
   lang: "en",
   it
 ) = {
-    let f = it.func()
-    if (f == image) {
-      i18n("figure-name", lang: lang)
-    } else if (f == table) {
-      i18n("table-name", lang: lang)
-    } else if (f == raw) {
-      i18n("listing-name", lang: lang)
-      } else if (f == math.equation) {
-      i18n("equation-name", lang: lang)
-    } else {
-      auto
-    }
+  let f = it.func()
+  if (f == image) {
+    i18n("figure-name", lang: lang)
+  } else if (f == table) {
+    i18n("table-name", lang: lang)
+  } else if (f == raw) {
+    i18n("listing-name", lang: lang)
+  } else if (f == math.equation) {
+    i18n("equation-name", lang: lang)
+  } else {
+    auto
   }
+}
 //-------------------------------------
 // Reference helper function
 //
 #let myref(label) = locate(loc =>{
-    if query(label,loc).len() != 0 {
-        ref(label)
-    } else {
-        text(fill: red)[?]
-    }
+  if query(label,loc).len() != 0 {
+    ref(label)
+  } else {
+    text(fill: red)[?]
+  }
 })
 
 //-------------------------------------
@@ -115,16 +115,13 @@
       rows: (100%),
       stroke: none,
       align: center+horizon,
-      [
-        #rotate(
-          -45deg,
-          origin: center+horizon,
-        )[
-          #text(fill: red, size: huger)[
-            No page found
-          ]
+      rotate(
+        -45deg,
+        origin: center+horizon,
+        text(fill: red, size: huger)[
+          No page found
         ]
-      ]
+      )
     )
   }
 }
@@ -153,22 +150,22 @@
   indent: auto,
 ) = {
   // Table of content
-    if tableof.toc == true {
-      if before != none {
-        outline(
-          title: titles.toc,
-          target: selector(heading).before(before, inclusive: true),
-          indent: indent,
-          depth: tableof.maxdepth,
-        )
-      } else {
-        outline(
-          title: titles.toc,
-          indent: indent,
-          depth: tableof.maxdepth,
-        )
-      }
+  if tableof.toc == true {
+    if before != none {
+      outline(
+        title: titles.toc,
+        target: selector(heading).before(before, inclusive: true),
+        indent: indent,
+        depth: tableof.maxdepth,
+      )
+    } else {
+      outline(
+        title: titles.toc,
+        indent: indent,
+        depth: tableof.maxdepth,
+      )
     }
+  }
 
   // Table of figures
   if tableof.tof == true {
@@ -204,7 +201,7 @@
   if tableof.toe == true {
     outline(
       title: titles.toe,
-      target: math.equation.where(block:true),
+      target: math.equation.where(block: true),
       indent: indent,
       depth: tableof.maxdepth,
     )
@@ -224,7 +221,7 @@
   v(2em)
   text(large, weight: "bold", title)
   if addline == true {
-    line(length:length, stroke:stroke)
+    line(length: length, stroke: stroke)
   }
   let h = selector(heading.where(level: 2))
       .or(heading.where(level: 3))
@@ -240,11 +237,11 @@
     target: selector(h)
       .after(after)
       .before(before, inclusive: false),
-      depth: depth,
-      indent: indent,
+    depth: depth,
+    indent: indent,
   )
   if addline == true {
-    line(length:length, stroke:stroke)
+    line(length: length, stroke: stroke)
   }
 }
 
@@ -255,7 +252,10 @@
   let headings = ()
   let last-heading
   for todo in queried-todos {
-    let new-last-heading = query(selector(heading).before(todo.location())).last()
+    let new-last-heading = query(
+      selector(heading).before(todo.location())
+    ).last()
+
     if last-heading != new-last-heading {
       headings.push((heading: new-last-heading, todos: (todo,)))
        last-heading = new-last-heading
@@ -475,19 +475,19 @@
   pb: false,
   minitoc-title: i18n("toc-title", lang: "en"),
   body
-) = [
-  #if (after != none and before != none) {
-    minitoc(title: minitoc-title, after:after, before:before, indent: auto)
+) = {
+  if (after != none and before != none) {
+    minitoc(title: minitoc-title, after: after, before: before, indent: auto)
     if pb {
       pagebreak()
     }
   }
-  #set heading(offset: heading-offset)
+  set heading(offset: heading-offset)
 
-  #if (file != none) {
+  if (file != none) {
     include file
   } else {
     body
   }
-  #set heading(offset: 0)
-]
+  set heading(offset: 0)
+}
