@@ -58,7 +58,8 @@
   title-extra-content-top: none,
   title-extra-content-bottom: none,
   custom-title-page: none,
-  body) = {
+  body
+) = {
   // Sanitize inputs
   doc.title    = doc.at("title", default: none)
   doc.subtitle = doc.at("subtitle", default: none)
@@ -184,19 +185,28 @@
   logos.bottomleft = logos.at("bottomleft", default: none)
   logos.bottomright = logos.at("bottomright", default: none)
   // basic properties
-  set document(author: if doc.author.name != none {doc.author.name} else {""} , title: doc.title, keywords: doc.keywords, date: date.today)
-  set page(margin: (top:3.5cm, bottom:3.5cm, rest:3.5cm))
+  set document(
+    author: if doc.author.name != none {doc.author.name} else {""},
+    title: doc.title,
+    keywords: doc.keywords,
+    date: date.today
+  )
+  set page(margin: (top: 3.5cm, bottom: 3.5cm, rest: 3.5cm))
 
   // header and footer
   set page(
-    header: context(if here().page() >=2 [
-    #set text(small)
-      #h(1fr) #smallcaps(doc.title)
-    ]),
-    footer: context( if here().page() >=2 [
-      #set text(small)
-      #h(1fr) #counter(page).display("I / 1", both: false)
-    ]),
+    header: context {
+      if here().page() >= 2 [
+        #set text(small)
+        #h(1fr) #smallcaps(doc.title)
+      ]
+    },
+    footer: context {
+      if here().page() >= 2 [
+        #set text(small)
+        #h(1fr) #counter(page).display("I / 1", both: false)
+      ]
+    },
   )
 
   // font & language
@@ -237,26 +247,26 @@
   }
 
   // link color
-  //show link: it => text(fill:blue, underline(it))
-  show link: it => text(fill:hei-blue, it)
+  //show link: it => text(fill: blue, underline(it))
+  show link: it => text(fill: hei-blue, it)
 
   // code blocks
-  set raw(syntaxes:"syntax/VHDL.sublime-syntax")
-  set raw(syntaxes:"syntax/riscv.sublime-syntax")
+  set raw(syntaxes: "syntax/VHDL.sublime-syntax")
+  set raw(syntaxes: "syntax/riscv.sublime-syntax")
 
   show raw.where(block: false): set text(weight: "semibold")
   //show raw.where(block: false): it => {
   //  highlight(
-  //    fill:code-bg,
+  //    fill: code-bg,
   //    top-edge: "ascender",
   //    bottom-edge: "bounds",
-  //    extent:1pt, it)
+  //    extent: 1pt, it)
   //}
   show raw.where(block: true): set text(size: tiny)
   show raw.where(block: true): it => {
     block(
       fill: code-bg,
-      width:100%,
+      width: 100%,
       inset: 10pt,
       radius: 4pt,
       stroke: 0.1pt + code-border,
@@ -269,8 +279,8 @@
     zebra-fill: none,
     stroke: 0.1pt + code-border,
     radius: 4pt,
-    number-format: (number) => text(luma(210), size:7pt, [#h(1em)#number]),
-    inset: (left:0em, rest:0.32em),
+    number-format: (number) => text(luma(210), size: 7pt, [#h(1em)#number]),
+    inset: (left: 0em, rest: 0.32em),
     fill: code-bg,
   )
 
@@ -353,14 +363,18 @@
   // Main body
   set par(justify: true)
   set page(
-    header: context(if here().page() >=2 [
-    #set text(small)
-      #h(1fr) #smallcaps(doc.title)
-    ]),
-    footer: context( if here().page() >=2 [
-      #set text(small)
-      #h(1fr) #counter(page).display("1 / 1", both: true)
-    ]),
+    header: context {
+      if here().page() >= 2 [
+        #set text(small)
+        #h(1fr) #smallcaps(doc.title)
+      ]
+    },
+    footer: context {
+      if here().page() >= 2 [
+        #set text(small)
+        #h(1fr) #counter(page).display("1 / 1", both: true)
+      ]
+    },
   )
   counter(page).update(1)
 
