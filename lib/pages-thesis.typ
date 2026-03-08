@@ -16,14 +16,16 @@
     specialisation: none,
   ),
   author: (
-    gender      : none,
-    name        : none,
-    email       : none,
-    degree      : none,
-    affiliation : none,
-    place       : none,
-    url         : none,
-    signature   : none,
+    (
+      gender      : none,
+      name        : none,
+      email       : none,
+      degree      : none,
+      affiliation : none,
+      place       : none,
+      url         : none,
+      signature   : none,
+    )
   ),
   professor: none,
   expert: none,
@@ -101,13 +103,13 @@
 
     // AUTHORs
     align(center, text(size: large, {
-      if type(author) == array {
+      if author.len() > 1 {
         enumerating-authors(
           items: author,
           multiline: true,
         )
       } else {
-        author.name
+        author.at(0).name
       }
       v(2em)
     }))
@@ -163,6 +165,22 @@
     align(left+horizon)[#logos.bottomleft],
     align(right+horizon)[#logos.bottomright],
   )
+}
+
+#let summary-graduate-line(author, lang) = {
+  let gender = if author != none and "gender" in author {author.gender} else {none}
+  let name = if author != none and "name" in author {author.name} else {none}
+  let title = get-gendered-label(gender, "graduate", lang: lang)
+  return ({
+    set text(
+      size: 12pt,
+      fill: gray.darken(50%),
+    )
+    title
+  },{
+    set text(size: 10pt)
+    name
+  } )
 }
 
 #let summary(
@@ -267,31 +285,10 @@
         #heading(numbering: none, outlined: false)[#title]
       ])
       #table(
-        columns: (0cm, 3.5cm, 1fr),
+        columns: (3.5cm, 1fr),
         stroke: none,
         align: left + horizon,
-        [
-          //#square(size: 0.7cm, fill: blue.lighten(70%))
-        ],
-        [
-          #set text(
-            size: 12pt,
-            fill: gray.darken(50%),
-          )
-          #let graduate_l = if author.gender == "feminin" {
-            i18n("graduate-f", lang: lang)
-          } else if author.gender == "inclusive" {
-            i18n("graduate-i", lang: lang)
-          } else {
-            i18n("graduate", lang: lang)
-          }
-
-          #graduate_l
-        ],
-        [
-          #set text(size: 10pt)
-          #author.name
-        ]
+        ..author.map((a) => summary-graduate-line(a, lang)).flatten()
       )
 
       #v(1.5cm)
@@ -326,21 +323,21 @@
   v(2em)
   heading(numbering: none, outlined: false)[*#i18n("contact-info", lang: lang)*]
 
-  let author_l = get-gendered-label(author.gender, "author", lang: lang)
-  let student_l = get-gendered-label(author.gender, "student", lang: lang)
+  let author_l = get-gendered-label(author.at(0).gender, "author", lang: lang)
+  let student_l = get-gendered-label(author.at(0).gender, "student", lang: lang)
   
   table(
     columns: (auto, auto),
     stroke: none,
     align: left + top,
-    table.cell(rowspan: 3)[#if author.email != none [#author_l:]], author.name,
+    table.cell(rowspan: 3)[#if author.at(0).email != none {[#author_l:]}], [#author.at(0).name],
     if lang == "fr" {
-      [#if author.degree != none {student_l} #author.degree]
+      [#if author.at(0).degree != none {student_l} #author.at(0).degree]
     } else {
-      [#author.degree #if author.degree != none {student_l}]
+      [#author.at(0).degree #if author.at(0).degree != none {student_l}]
     },
-    author.affiliation,
-    if author.email != none [#i18n("email", lang: lang):], link("mailto:author.email")[#author.email],
+    author.at(0).affiliation,
+    if author.at(0).email != none [#i18n("email", lang: lang):], link("mailto:author.at(0).email")[#author.at(0).email],
   )
 
   v(5em)
@@ -353,11 +350,11 @@
     stroke: none,
     columns: (auto, auto),
     align: left + horizon,
-    i18n("declaration-signature-prefix", lang: lang), [#author.place#if author.place != none{[,]} #date.display("[day].[month].[year]")],
+    i18n("declaration-signature-prefix", lang: lang), [#author.at(0).place#if author.at(0).place != none{[,]} #date.display("[day].[month].[year]")],
     i18n("declaration-signature", lang: lang),
-    if author.signature != none {
+    if author.at(0).signature != none {
       v(0.5cm)
-      pad(x: 2.5em, author.signature)
+      pad(x: 2.5em, author.at(0).signature)
       line(start: (0cm, -0.7cm), length: 5cm)
     } else {
       line(start: (0cm, 1.5cm), length: 7cm)
