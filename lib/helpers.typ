@@ -458,7 +458,6 @@
 // Chapter
 //
 #let add-chapter(
-  file: none,
   heading-offset: 0,
   after: none,
   before: none,
@@ -474,10 +473,7 @@
   }
   set heading(offset: heading-offset)
 
-  if (file != none) {
-    include file
-  } else {
-    body
-  }
+  body
+
   set heading(offset: 0)
 }
