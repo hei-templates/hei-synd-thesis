@@ -68,30 +68,6 @@ release_dir := if os() == "macos" {
   echo "Install typst"
   brew install typst
 
-# install the template locally as local package
-[linux]
-[macos]
-@copy-local:
-  echo "Install template locally as local"
-  echo "  {{local_dir}}/{{project_name}}/{{project_tag}}"
-  mkdir -p {{local_dir}}/{{project_name}}/{{project_tag}}
-  cp -r ./* {{local_dir}}/{{project_name}}/{{project_tag}}
-
-# install the template locally as preview package
-[linux]
-[macos]
-@copy-preview:
-  echo "Install template locally as preview"
-  echo "  {{preview_dir}}/{{project_name}}/{{project_tag}}"
-  mkdir -p {{preview_dir}}/{{project_name}}/{{project_tag}}
-  cp -r ./* {{preview_dir}}/{{project_name}}/{{project_tag}}
-  rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/guide-to-thesis.pdf
-  rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/guide-to-typst.pdf
-  rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/sample.png
-  rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/sample.svg
-  rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/justfile
-  rm -f {{preview_dir}}/{{project_name}}/{{project_tag}}/template/*.pdf
-
 # create or update a symlink in preview package path to the current project root
 [linux]
 [macos]
@@ -109,6 +85,24 @@ release_dir := if os() == "macos" {
   echo "Remove template link/folder from preview directory"
   echo "  {{preview_dir}}/{{project_name}}/{{project_tag}}"
   rm -rf {{preview_dir}}/{{project_name}}/{{project_tag}}
+
+# create or update a symlink in local package path to the current project root
+[linux]
+[macos]
+@link-local:
+  echo "Link template in local directory to current project root"
+  echo "  {{local_dir}}/{{project_name}}/{{project_tag}} -> {{project_dir}}"
+  mkdir -p {{local_dir}}/{{project_name}}
+  rm -rf {{local_dir}}/{{project_name}}/{{project_tag}}
+  ln -s {{project_dir}} {{local_dir}}/{{project_name}}/{{project_tag}}
+
+# remove local symlink/folder for current project version
+[linux]
+[macos]
+@unlink-local:
+  echo "Remove template link/folder from local directory"
+  echo "  {{local_dir}}/{{project_name}}/{{project_tag}}"
+  rm -rf {{local_dir}}/{{project_name}}/{{project_tag}}
 
 # install the template as release package
 [linux]
