@@ -2,6 +2,58 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2026-03-09
+
+### 🚀 Features
+
+- *(lib)* Add option to disable report info page ([3ec09ec](https://github.com/hei-templates/hei-synd-thesis/commit/3ec09ecf5f08b219086de3580f323ace5ef2866b) - Klagarge)
+- *(lib)* Add get-gendered-label function ([506d6ef](https://github.com/hei-templates/hei-synd-thesis/commit/506d6efa9071309244cf93186c8b769c8cb3c301) - Klagarge)
+- *(lib)* [**breaking**] Add multi-authors ([0c1768f](https://github.com/hei-templates/hei-synd-thesis/commit/0c1768f9600504bfd2ec4d1e2502ff8221549611) - Klagarge)
+- *(lib)* [**breaking**] Add multi-professor and expert ([889a06e](https://github.com/hei-templates/hei-synd-thesis/commit/889a06e7c7cef3d01e710a76615d98673a414ea4) - Klagarge)
+- *(tools)* Add symlink management for preview package ([c6c2602](https://github.com/hei-templates/hei-synd-thesis/commit/c6c2602981ab5eabeb893ea4ebe18a92d153089c) - Klagarge)
+- *(boxes)* Add think and help boxes incl images, add exam headers ([e946267](https://github.com/hei-templates/hei-synd-thesis/commit/e94626795cdf815e683f765fb92dc4f210f28d1c) - zas)
+
+### 🐛 Bug Fixes
+
+- *(lib)* Remove duplicate list item definitions ([137bf5e](https://github.com/hei-templates/hei-synd-thesis/commit/137bf5e25b58e6ea22346c91c3ebc4f08d78a2a4) - LordBaryhobal)
+- *(lib)* Improve indentation and spacing ([3a082cf](https://github.com/hei-templates/hei-synd-thesis/commit/3a082cfa5caff6c4a4b51b64a5906c5c8701d023) - LordBaryhobal)
+- *(lib)* Improve for loops with enumerate ([b9ca10c](https://github.com/hei-templates/hei-synd-thesis/commit/b9ca10cef06b31f302e56ac8c1a25cf79d25753a) - LordBaryhobal)
+- *(lib)* Improve indentation and spacing ([dac7318](https://github.com/hei-templates/hei-synd-thesis/commit/dac73188b83d6e75445a498c24aa02a0c582e738) - LordBaryhobal)
+- *(lib)* Improve indentation and spacing ([dc4016a](https://github.com/hei-templates/hei-synd-thesis/commit/dc4016acf465dda627652d2dbb7235efd050b9df) - LordBaryhobal)
+- *(lib)* Remove file option for add-chapter function ([8a41930](https://github.com/hei-templates/hei-synd-thesis/commit/8a41930374437a8f60d3786ee865c1106a7b607d) - Klagarge)
+- *(template)* Fully remove table of content page if no table to display ([189538d](https://github.com/hei-templates/hei-synd-thesis/commit/189538d1b8f9b7450409544d5f3c1456fb4ab981) - Klagarge)
+- *(template)* Add missing school shortname in german version ([7535214](https://github.com/hei-templates/hei-synd-thesis/commit/7535214d71a3b10c0e508648830650d63d6997da) - Klagarge)
+- *(reportinfo)* Change disable-reportinfo to display-reportinfo. Add to metadata. ([4010807](https://github.com/hei-templates/hei-synd-thesis/commit/401080737ff1dddd7b5ab367db89762d2177c709) - zas)
+
+### 💼 Other
+
+- Refactor of release and check ([afe0eb9](https://github.com/hei-templates/hei-synd-thesis/commit/afe0eb9264a534ae29ae87641383ee85e651b2df) - Klagarge)
+- *(build)* Add fonts installation ([c4df84e](https://github.com/hei-templates/hei-synd-thesis/commit/c4df84ec6ad5b073495badb72bcfe97817090457) - Klagarge)
+
+### 🚜 Refactoring
+
+- *(lib)* Simplify list item definition using .with ([eb88736](https://github.com/hei-templates/hei-synd-thesis/commit/eb8873602237b5ca59d9c647a0f2c0ebddf0bc07) - LordBaryhobal)
+- *(lib)* Simplify icon boxes definition using .with ([899d8a4](https://github.com/hei-templates/hei-synd-thesis/commit/899d8a4e84679fa693d1286f8fc5c5dc75541405) - LordBaryhobal)
+- *(lib)* Rename institution to affiliation to keep consistency ([e379907](https://github.com/hei-templates/hei-synd-thesis/commit/e3799077ae0207f609c2915d5cf934989e5843bb) - Klagarge)
+
+### 📚 Documentation
+
+- *(readme)* Update metadatas guide and feature in readme ([d9b9b9b](https://github.com/hei-templates/hei-synd-thesis/commit/d9b9b9b4e20454e0143f8560345fae3969062b89) - Klagarge)
+- *(readme)* Add reference to contributing.md ([6c760ab](https://github.com/hei-templates/hei-synd-thesis/commit/6c760ab922477d81906fa2e56e8687829a9a70e3) - zas)
+
+### ⚙️ Miscellaneous Tasks
+
+- Add IDE section in gitignore ([4f26a9a](https://github.com/hei-templates/hei-synd-thesis/commit/4f26a9a41223efc8cb76fb59fcabea6e9bfc42c3) - Klagarge)
+- *(lib)* Bump version ([fa08faa](https://github.com/hei-templates/hei-synd-thesis/commit/fa08faa05791aeb4b208a590d9eefa5c4d18e590) - Klagarge)
+- Export only necessary function ([9e139a7](https://github.com/hei-templates/hei-synd-thesis/commit/9e139a7d1bd760dbf36b0ccf91e00807a5460994) - Klagarge)
+- *(tools)* Remove extra / for linux path ([da8bb85](https://github.com/hei-templates/hei-synd-thesis/commit/da8bb8521b33b2eabb04f3d426780ba8dfd8e25e) - Klagarge)
+- *(docs)* Add new versions of guide-to-* ([f0d0b12](https://github.com/hei-templates/hei-synd-thesis/commit/f0d0b12df606bed663ca962af8af2480be6948c4) - zas)
+- *(bump)* Versions of template,typst ([b7a7c5b](https://github.com/hei-templates/hei-synd-thesis/commit/b7a7c5be9c9b4ab511981090abea7c15db34e94e) - zas)
+- *(tool)* Remove copy recipies and add/unlink link local package ([5537009](https://github.com/hei-templates/hei-synd-thesis/commit/55370093e5bec1f9bb4a4f1ff2c2e31715ae7f32) - zas)
+- *(tool)* Refactor link and unlink add check-links recipe ([db47587](https://github.com/hei-templates/hei-synd-thesis/commit/db47587b6790c7c2831c82da967861db3236ec81) - zas)
+
+**Full Changelog**: [v0.2.3...0.3.0](https://github.com/hei-templates/hei-synd-thesis/compare/v0.2.3...0.3.0)
+
 ## [0.2.3] - 2025-10-18
 
 ### 🐛 Bug Fixes
