@@ -68,41 +68,76 @@ release_dir := if os() == "macos" {
   echo "Install typst"
   brew install typst
 
+# create or update a symlink to the current project root
+[linux]
+[macos]
+@link path:
+  echo "Link template in {{path}} to current project root"
+  echo "  {{path}}/{{project_tag}} -> {{project_dir}}"
+  mkdir -p {{preview_dir}}/{{project_name}}
+  rm -rf {{path}}/{{project_tag}}
+  ln -s {{project_dir}} {{path}}/{{project_tag}}
+
+# remove symlink/folder for current project version
+[linux]
+[macos]
+@unlink path:
+  echo "Remove template link/folder from {{path}}"
+  echo "  {{path}}/{{project_tag}}"
+  rm -rf {{path}}/{{project_tag}}
+
 # create or update a symlink in preview package path to the current project root
 [linux]
 [macos]
-@link-preview:
-  echo "Link template in preview directory to current project root"
-  echo "  {{preview_dir}}/{{project_name}}/{{project_tag}} -> {{project_dir}}"
-  mkdir -p {{preview_dir}}/{{project_name}}
-  rm -rf {{preview_dir}}/{{project_name}}/{{project_tag}}
-  ln -s {{project_dir}} {{preview_dir}}/{{project_name}}/{{project_tag}}
-
-# remove preview symlink/folder for current project version
-[linux]
-[macos]
-@unlink-preview:
-  echo "Remove template link/folder from preview directory"
-  echo "  {{preview_dir}}/{{project_name}}/{{project_tag}}"
-  rm -rf {{preview_dir}}/{{project_name}}/{{project_tag}}
+@link-preview: (link preview_dir / project_name)
 
 # create or update a symlink in local package path to the current project root
 [linux]
 [macos]
-@link-local:
-  echo "Link template in local directory to current project root"
-  echo "  {{local_dir}}/{{project_name}}/{{project_tag}} -> {{project_dir}}"
-  mkdir -p {{local_dir}}/{{project_name}}
-  rm -rf {{local_dir}}/{{project_name}}/{{project_tag}}
-  ln -s {{project_dir}} {{local_dir}}/{{project_name}}/{{project_tag}}
+@link-local: (link local_dir / project_name)
+
+# create or update symlinks preview and local to the current project root
+[linux]
+[macos]
+@link-all: link-preview link-local
+
+# remove preview symlink/folder for current project version
+[linux]
+[macos]
+@unlink-preview: (unlink preview_dir / project_name)
 
 # remove local symlink/folder for current project version
 [linux]
 [macos]
-@unlink-local:
-  echo "Remove template link/folder from local directory"
-  echo "  {{local_dir}}/{{project_name}}/{{project_tag}}"
-  rm -rf {{local_dir}}/{{project_name}}/{{project_tag}}
+@unlink-local: (unlink local_dir / project_name)
+
+# remove all symlinks preview and local for current project version
+[linux]
+[macos]
+@unlink-all: unlink-preview unlink-local
+
+# check if a symlink exists at the given path and where it points
+[linux]
+[macos]
+check-link path:
+  #!/usr/bin/env sh
+  echo "Check link for {{path}}"
+  expanded_path=$(eval echo "{{path}}")
+  if [ -L "$expanded_path" ]; then
+    target=$(readlink "$expanded_path")
+    echo "  linked -> $target"
+  elif [ -d "$expanded_path" ]; then
+    echo "  exists (directory, not a symlink)"
+  else
+    echo "  unlinked"
+  fi
+
+# check if both preview and local symlinks exist
+[linux]
+[macos]
+@check-links:
+  just check-link {{local_dir}}/{{project_name}}/{{project_tag}}
+  just check-link {{preview_dir}}/{{project_name}}/{{project_tag}}
 
 # install the template as release package
 [linux]
