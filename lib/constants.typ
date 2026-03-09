@@ -62,6 +62,8 @@
 #let color-fire      = rgb("#fc9502ff")
 #let color-rocket    = rgb("#bc5fd3ff")
 #let color-todo      = rgb("#F5F5F5").darken(10%)
+#let color-think     = rgb("#00925a").darken(20%)
+#let color-help      = rgb("#00925a").darken(20%)
 
 // Resources
 #let icons-folder      = "img/"
@@ -83,6 +85,8 @@
 #let icon-square       = icons-folder + "square.svg"
 #let icon-todo         = icons-folder + "todo.svg"
 #let icon-warning      = icons-folder + "warning.svg"
+#let icon-think        = icons-folder + "think.svg"
+#let icon-help         = icons-folder + "help.svg"
 #let icon-x-circle     = icons-folder + "x-circle.svg"
 #let icon-x-square     = icons-folder + "x-square.svg"
 #let icon-x            = icons-folder + "x.svg"
