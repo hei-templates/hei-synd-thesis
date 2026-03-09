@@ -1,4 +1,4 @@
-#import "@preview/hei-synd-thesis:0.2.3": *
+#import "@preview/hei-synd-thesis:0.3.0": *
 
 //-------------------------------------
 // Document options

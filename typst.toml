@@ -1,10 +1,11 @@
 [package]
 name = "hei-synd-thesis"
-version = "0.2.3"
-compiler = "0.13.1"
+version = "0.3.0"
+compiler = "0.14.2"
 authors = [
   "Silvan Zahno <https://github.com/tschinz>",
   "Rémi Heredero <https://github.com/Klagarge>",
+  "Louis Heredero <https://github.com/LordBaryhobal>",
   "HEI-Vs <https://synd.hevs.io>",
 ]
 repository = "https://github.com/hei-templates/hei-synd-thesis"
