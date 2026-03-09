@@ -101,13 +101,13 @@
   title-extra-content-top: none,
   title-extra-content-bottom: none,
   custom-title-page: none,
-  disable-reportinfo: false,
+  display-reportinfo: true,
   body
 ) = {
   // Sanitize inputs
   doc.title    = doc.at("title", default: none)
   doc.subtitle = doc.at("subtitle", default: none)
-  
+
   doc.author = doc.author.map(sanitize-author)
   professor = professor.map(sanitize-professor)
   expert = expert.map(sanitize-expert)
@@ -133,7 +133,7 @@
     summary-page
   }
 
-  
+
   school = if school == none {
     (
       name: none,
@@ -349,8 +349,8 @@
   }
 
   // Report info
-  if doc.author.len() > 1 {disable-reportinfo = true}
-  if disable-reportinfo == false {
+  if doc.author.len() > 1 {display-reportinfo = false}
+  if display-reportinfo {
     pagebreak()
     page-reportinfo(
       author: doc.author,
@@ -379,7 +379,7 @@
       ),
       before: <sec:glossary>
     )
-    
+
   }
 
   // Main body

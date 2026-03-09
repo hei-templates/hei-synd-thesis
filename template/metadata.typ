@@ -44,6 +44,7 @@
 )
 
 #let data-page = read("/resources/thesis-data.pdf", encoding: none) // [bytes|none]
+#let display-reportinfo = true // [true|false]
 
 #let summary-page = (
   logo: project-logo,

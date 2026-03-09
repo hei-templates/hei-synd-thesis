@@ -22,6 +22,7 @@
   date: date,
   tableof: tableof,
   logos: logos,
+  display-reportinfo: display-reportinfo,
 )
 
 //-------------------------------------

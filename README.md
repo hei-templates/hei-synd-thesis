@@ -54,6 +54,7 @@ All metadata is optional, but it is recommended to fill in as much as possible. 
 | `doc.keywords`                  | _list_ of _string_                            | Keywords for the document.                                                                          |
 | `doc.version`                   | _content_                                     | Version of the document.                                                                            |
 | `data-page`                     | _bytes_                                       | Bytes of the pdf of the thesis data use `read("/path/file.pdf", encoding:none)`                     |
+| `display-reportinfo`            | _boolean_                                     | Add page "Information about this report" including Declaration of honor (default: `true`)           |
 | `summary-page`                  | _dictionary_                                  | Summary page metadata                                                                               |
 | `summary-page.logo`             | _image_                                       | Logo for the summary page.                                                                          |
 | `summary-page.objective`        | _content_                                     | Objective of the document.                                                                          |
@@ -123,7 +124,8 @@ typst compile thesis.typ --input type="draft" --input lang="de"
 - Customizable logos
 - Draft and Final Typesetting via typst inputs
 - Title page
-- Thesis data page
+- Optional thesis data page
+- Optional report info page
 - Summary page
 - Table of contents
 - Table of figures
@@ -132,8 +134,8 @@ typst compile thesis.typ --input type="draft" --input lang="de"
 - Table of equations
 - Todo Boxes with Table of Todos in draft mode
 - Custom Boxes
-- Sourcecode with codelst
-- Glossary and Acronyms with Glossarium
+- Sourcecode with codelst and codly
+- Glossary and Acronyms with glossarium
 - Bibliography
 - Content help
   - Acknowledgements
