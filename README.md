@@ -160,13 +160,7 @@ IF you need help writing your thesis look at the document [Guide-to-Thesis](http
 
 ## Contributing
 
-If you would like to contribute to any of the repositories in this organization, please follow these steps:
-
-1. Fork the repository you want to contribute to.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them with conventional commit messages.
-4. Push your branch to your forked repository.
-5. Open a pull request in the original repository and describe your changes.
+All notable information about contributing to this project can be found in the [CONTRIBUTING.md](https://github.com/hei-templates/hei-synd-thesis/blob/main/CONTRIBUTING.md) file.
 
 ## Issues and Support
 
