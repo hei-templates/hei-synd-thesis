@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.1] - 2026-03-10
+
+### 🐛 Bug Fixes
+
+- *(packages)* Remove muchdf package and add mmdr package ([251dcc1](https://github.com/hei-templates/hei-synd-thesis/commit/251dcc127a56c04b44c91997752889e532f33bc8) - zas)
+- Smaller problems (permalink, checkboxes in readme ([2abfc52](https://github.com/hei-templates/hei-synd-thesis/commit/2abfc52f53b028dfa49065a64884a102a928a1ac) - zas)
+
+### 🚜 Refactoring
+
+- *(pages)* Add display option and naming of additional pages (thesis-data, summary and report-info) ([2e609f9](https://github.com/hei-templates/hei-synd-thesis/commit/2e609f962ef96a312c8ea883725ce283c6b6bd09) - zas)
+
+### ⚙️ Miscellaneous Tasks
+
+- *(tool)* Add automatic removal of tracker in release readme ([881da2f](https://github.com/hei-templates/hei-synd-thesis/commit/881da2f0d3fb25b4d0ca829a968319ed59fba3f0) - zas)
+
+
+**Full Changelog**: [0.3.0...0.3.1](https://github.com/hei-templates/hei-synd-thesis/compare/0.3.0...0.3.1)
+
 ## [0.3.0] - 2026-03-09
 
 ### 🚀 Features

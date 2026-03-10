@@ -22,8 +22,8 @@ body = """
             {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}]($REPO/commit/{{ commit.id }}) - {{ commit.author.name }})\
     {% endfor %}
 {% endfor %}\n
-{% if version %}
-    {% if previous.version %}
+{% if version %}\
+    {% if previous.version %}\
       **Full Changelog**: [{{ previous.version }}...{{ version }}]($REPO/compare/{{ previous.version }}...{{ version }})
     {% endif %}
 {% else -%}
