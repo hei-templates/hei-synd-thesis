@@ -152,7 +152,9 @@ check-link path:
   rm -f {{release_dir}}/{{project_name}}/{{project_tag}}/sample.png
   rm -f {{release_dir}}/{{project_name}}/{{project_tag}}/sample.svg
   rm -f {{release_dir}}/{{project_name}}/{{project_tag}}/justfile
+  rm -f {{release_dir}}/{{project_name}}/{{project_tag}}/cliff.toml
   rm -f {{release_dir}}/{{project_name}}/{{project_tag}}/template/*.pdf
+  sed -i '' '/!\[\](https:\/\/tianji\.zahno\.dev\/telemetry/d' {{release_dir}}/{{project_name}}/{{project_tag}}/README.md
 
 # generate changelog and tag for the current release
 @changelog-unreleased:
