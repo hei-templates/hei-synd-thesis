@@ -53,12 +53,14 @@ All metadata is optional, but it is recommended to fill in as much as possible. 
 | `doc.author.at(0).signature`    | _image_                                       | Signature of the author.                                                                            |
 | `doc.keywords`                  | _list_ of _string_                            | Keywords for the document.                                                                          |
 | `doc.version`                   | _content_                                     | Version of the document.                                                                            |
-| `data-page`                     | _bytes_                                       | Bytes of the pdf of the thesis data use `read("/path/file.pdf", encoding:none)`                     |
-| `display-reportinfo`            | _boolean_                                     | Add page "Information about this report" including Declaration of honor (default: `true`)           |
+| `thesis-data-page`              | _content_                                     | content of the thesis data use `image("/path/file.pdf", width: 100%)`                               |
 | `summary-page`                  | _dictionary_                                  | Summary page metadata                                                                               |
 | `summary-page.logo`             | _image_                                       | Logo for the summary page.                                                                          |
 | `summary-page.objective`        | _content_                                     | Objective of the document.                                                                          |
 | `summary-page.content`          | _content_                                     | Content of the document.                                                                            |
+| `display.report-info`           | _boolean_                                     | Add page "Information about this report" including Declaration of honor (default: `true`)           |
+| `display.thesis-data`           | _boolean_                                     | Add page "Thesis Data", requires `thesis-data-page` (default: `true`)                               |
+| `display.summary`               | _boolean_                                     | Add page "Summary", requires `summary-page` (default: `true`)                                       |
 | `professor`                     | _array_                                       | Array of professor metadata                                                                         |
 | `professor.at(0)`               | _dictionary_                                  | Professor metadata                                                                                  |
 | `professor.at(0).name`          | _content_                                     | Name of the professor.                                                                              |

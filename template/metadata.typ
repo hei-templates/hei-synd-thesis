@@ -1,4 +1,4 @@
-#import "@preview/hei-synd-thesis:0.3.0": *
+#import "@preview/hei-synd-thesis:0.3.1": *
 
 //-------------------------------------
 // Document options
@@ -43,9 +43,9 @@
   version  : "v0.1.0",
 )
 
-#let data-page = read("/resources/thesis-data.pdf", encoding: none) // [bytes|none]
-#let display-reportinfo = true // [true|false]
-
+// Thesis Data Page
+#let thesis-data-page = image("/resources/thesis-data.pdf", width: 100%) // [none|content]
+// Summary Page
 #let summary-page = (
   logo: project-logo,
   //one sentence with max. 240 characters, with spaces.
@@ -57,6 +57,13 @@
    This bachelor thesis focuses on the optimization of predictive maintenance systems within industrial IoT environments. Predictive maintenance is a key aspect of modern manufacturing, enabling the anticipation of equipment failures and reducing downtime. The research begins by outlining the theoretical foundations of predictive maintenance, including sensor data acquisition, processing, and analysis. The study then introduces advanced data processing algorithms, such as machine learning techniques, to enhance prediction accuracy and reliability. A case study approach is employed, using real-world industrial data to evaluate the system’s performance. The results demonstrate significant improvements in fault detection rates and decision-making efficiency. The thesis concludes by discussing the implications for industry and providing recommendations for future development. This work aims to contribute to the advancement of smart maintenance systems, supporting industry 4.0 transformation efforts.
   ],
   address: [HES-SO Valais Wallis • rue de l'Industrie 23 • 1950 Sion \ +41 58 606 85 11 • #link("mailto"+"info@hevs.ch")[info\@hevs.ch] • #link("www.hevs.ch")[www.hevs.ch]]
+)
+
+// Display Options for additional pages
+#let display = (
+  report-info: true,  // [true|false] display report info with declaration of honor
+  thesis-data: true,  // [true|false] display thesis data page
+  summary: true,      // [true|false] display summary page
 )
 
 #let professor = (
