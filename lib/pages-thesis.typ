@@ -353,7 +353,7 @@
 
   let author_l = get-gendered-label(author.at(0).gender, "author", lang: lang)
   let student_l = get-gendered-label(author.at(0).gender, "student", lang: lang)
-  
+
   table(
     columns: (auto, auto),
     stroke: none,
@@ -391,17 +391,14 @@
 }
 
 #let page-pdf(
-  data: none,
+  img: none,
 ) = {
-  if data != none {
+  if img != none {
     set page(
       margin: (0cm),
       header: none,
       footer: none,
     )
-    muchpdf(
-      data,
-      width: 100%,
-    )
+    img
   }
 }
