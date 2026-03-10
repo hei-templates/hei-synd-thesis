@@ -69,11 +69,16 @@
     keywords : ("HEI-Vs", "Systems Engineering", "Infotronics", "Thesis", "Template"),
     version  : "v0.1.0",
   ),
-  data-page: none,
+  thesis-data-page: none,
   summary-page : (
     logo: none,
     objective: none,
     content: none,
+  ),
+  display : (
+    report-info: true,
+    thesis-data: true,
+    summary: true,
   ),
   professor: (),
   expert: (),
@@ -314,7 +319,6 @@
     custom-title-page
   }
 
-
   // Table of Todos if draft
   if option.type == "draft" {
     pagebreak()
@@ -322,12 +326,12 @@
   }
 
   // Data
-  if data-page != none {
-    page-pdf(data: data-page)
+  if display.thesis-data and thesis-data-page != none {
+    page-pdf(img: thesis-data-page)
   }
 
   // Summary
-  if option.template == "thesis" and summary-page != none {
+  if option.template == "thesis" and summary-page != none and display.summary {
     pagebreak()
     summary(
       title: doc.title,
@@ -349,8 +353,8 @@
   }
 
   // Report info
-  if doc.author.len() > 1 {display-reportinfo = false}
-  if display-reportinfo {
+  if doc.author.len() > 1 {display.report-info = false}
+  if display.report-info {
     pagebreak()
     page-reportinfo(
       author: doc.author,

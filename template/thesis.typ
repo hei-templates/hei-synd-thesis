@@ -13,8 +13,9 @@
 #show: thesis.with(
   option: option,
   doc: doc,
-  data-page: data-page,
+  thesis-data-page: thesis-data-page,
   summary-page: summary-page,
+  display: display,
   professor: professor,
   expert: expert,
   // partner: expert,
@@ -22,7 +23,6 @@
   date: date,
   tableof: tableof,
   logos: logos,
-  display-reportinfo: display-reportinfo,
 )
 
 //-------------------------------------
