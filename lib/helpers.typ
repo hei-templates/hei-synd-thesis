@@ -20,8 +20,8 @@
 #import "@preview/icu-datetime:0.2.1"
 // List with Checkmarks
 #import "@preview/cheq:0.3.0": checklist
-// PDF integration
-#import "@preview/muchpdf:0.1.2": muchpdf
+// mermaid diagrams
+#import "@preview/mmdr:0.2.1": mermaid
 
 //-------------------------------------
 // Sourcecode modifs
@@ -115,7 +115,7 @@
 
 //-------------------------------------
 // Sanitization helper function
-// 
+//
 #let apply-dict-defaults(
   dict,
   defaults: (:),
