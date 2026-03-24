@@ -23,6 +23,7 @@
   date: date,
   tableof: tableof,
   logos: logos,
+  fonts: fonts,
 )
 
 //-------------------------------------
