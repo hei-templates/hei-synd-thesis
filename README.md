@@ -25,7 +25,7 @@ This is the official template for a Bachelorthesis at the [HEI-Vs Engineering Sc
 
    ```bash
    # from the typst universe
-   typst init @preview/hei-synd-thesis:0.3.1
+   typst init @preview/hei-synd-thesis:0.3.2
    ```
 
 2. Fill in the metadata in the `metadata.typ` file.
