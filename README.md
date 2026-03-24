@@ -100,7 +100,8 @@ All metadata is optional, but it is recommended to fill in as much as possible. 
 | `bib.path`                      | _string_                                      | Path to the bibliography file (default: `"/tail/bibliography.bib"`)                                 |
 | `bib.style`                     | _string_                                      | Style of the bibliography (default: `"ieee"`)                                                       |
 | `fonts.text`                    | _string_                                      | Fonts used for text (default: `"Libertinus Serif"`                                                  |
-| `fonts.raw`                     | _string_                                      | Fonts used for raw text (default: `"Libertinus Serif"`                                              |
+| `fonts.mono`                    | _string_                                      | Fonts used for raw text or sourcecode (default: `"DejaVu Sans Mono"`                                |
+| `fonts.math`                    | _string_                                      | Fonts used for math equations (default: `"New Computer Modern Math"`                                |
 
 3. Write your content in the `thesis.typ` file as well as the other files in the `main/` folder.
 
