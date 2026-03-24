@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.4.0] - 2026-03-24
+
+### 🚀 Features
+
+- *(font)* Add option to change font ([2fcf241](https://github.com/hei-templates/hei-synd-thesis/commit/2fcf2415448fb016cd192aabe08d2f3b97673b43) - zas)
+- *(font)* Add text, mono, math font options ([bf240cf](https://github.com/hei-templates/hei-synd-thesis/commit/bf240cfb028f28e7460bcf61f2117217cefd92bc) - zas)
+
+### 🐛 Bug Fixes
+
+- Gfm and comment ([c218181](https://github.com/hei-templates/hei-synd-thesis/commit/c218181f4f6a12938f5c0d7ef939d7075fcc4fff) - zas)
+- *(dates)* Correct some dates ([5fa7ee7](https://github.com/hei-templates/hei-synd-thesis/commit/5fa7ee7f2c58b324464056ee141847510ec79d76) - zas)
+- *(logo)* Remove unused logo, add synd-it logo ([90914a1](https://github.com/hei-templates/hei-synd-thesis/commit/90914a1e5c650a57a3ceb19ffa8f67ced6439268) - zas)
+
+### ⚙️ Miscellaneous Tasks
+
+- *(version)* Bump to 0.4.0 ([7a9e9b6](https://github.com/hei-templates/hei-synd-thesis/commit/7a9e9b6cf22dc89d6e537835c0ceeafa032129f1) - zas)
+
+**Full Changelog**: [0.3.1...0.4.0](https://github.com/hei-templates/hei-synd-thesis/compare/0.3.1...0.4.0)
+
 ## [0.3.1] - 2026-03-10
 
 ### 🐛 Bug Fixes
