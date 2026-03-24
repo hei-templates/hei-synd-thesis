@@ -142,6 +142,7 @@
 )
 
 #let fonts = (
-  text : "Libertinus Serif",
-  raw  : "DejaVu Sans Mono",
+  text: "Libertinus Serif",
+  mono: "DejaVu Sans Mono",
+  math: "New Computer Modern Math",
 )
