@@ -106,7 +106,10 @@
   title-extra-content-top: none,
   title-extra-content-bottom: none,
   custom-title-page: none,
-  display-reportinfo: true,
+  fonts : (
+    text: "Libertinus Serif",
+    raw: "DejaVu Sans Mono",
+  ),
   body
 ) = {
   // Sanitize inputs
@@ -227,8 +230,7 @@
   // font & language
   set text(
     font: (
-      "Libertinus Serif",
-      "Fira Sans",
+      fonts.text,
     ),
     fallback: true,
     lang: option.lang
@@ -266,6 +268,11 @@
   show link: it => text(fill: hei-blue, it)
 
   // code blocks
+  show raw: set text(
+    font: (
+      fonts.raw
+    ),
+  fallback: true,)
   set raw(syntaxes: "syntax/VHDL.sublime-syntax")
   set raw(syntaxes: "syntax/riscv.sublime-syntax")
 
