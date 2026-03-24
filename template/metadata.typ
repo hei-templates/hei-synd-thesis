@@ -103,8 +103,8 @@
 }
 
 #let date = (
-  submission: datetime(year: 2025, month: 8, day: 14),
-  mid-term-submission: datetime(year: 2025, month: 5, day: 2),
+  submission: datetime(year: 2026, month: 8, day: 14),
+  mid-term-submission: datetime(year: 2026, month: 5, day: 1),
   today: datetime.today(),
 )
 
