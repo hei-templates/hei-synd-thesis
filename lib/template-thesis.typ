@@ -108,7 +108,8 @@
   custom-title-page: none,
   fonts : (
     text: "Libertinus Serif",
-    raw: "DejaVu Sans Mono",
+    mono: "DejaVu Sans Mono",
+    math: "New Computer Modern Math"
   ),
   body
 ) = {
@@ -228,13 +229,9 @@
   )
 
   // font & language
-  set text(
-    font: (
-      fonts.text,
-    ),
-    fallback: true,
-    lang: option.lang
-  )
+  set text(font: (fonts.text), fallback: true, lang: option.lang)
+  show math.equation: set text( font: (fonts.math), fallback: true)
+
   // paragraph
   show par: set par(spacing: 1em)
 
@@ -268,22 +265,10 @@
   show link: it => text(fill: hei-blue, it)
 
   // code blocks
-  show raw: set text(
-    font: (
-      fonts.raw
-    ),
-  fallback: true,)
+  show raw: set text(font: (fonts.mono), fallback: true)
   set raw(syntaxes: "syntax/VHDL.sublime-syntax")
   set raw(syntaxes: "syntax/riscv.sublime-syntax")
-
   show raw.where(block: false): set text(weight: "semibold")
-  //show raw.where(block: false): it => {
-  //  highlight(
-  //    fill: code-bg,
-  //    top-edge: "ascender",
-  //    bottom-edge: "bounds",
-  //    extent: 1pt, it)
-  //}
   show raw.where(block: true): set text(size: tiny)
   show raw.where(block: true): it => {
     block(
