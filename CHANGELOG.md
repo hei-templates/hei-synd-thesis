@@ -104,7 +104,7 @@ All notable changes to this project will be documented in this file.
 - _(libs)_ Bump all libs for proper 0.2.3 release ([8b5df5a](https://github.com/hei-templates/hei-synd-thesis/commit/8b5df5a9cefb45283ee8dfcc36edfd0b6a5f64b3) - zas)
 - Pedantic typst release check ([746a3ce](https://github.com/hei-templates/hei-synd-thesis/commit/746a3ced9c5db12e9f2ce8e0689a0b95543c7368) - zas)
 
-**Full Changelog**: [0.2.2...0.2.3](https://github.com/hei-templates/hei-synd-thesis/compare/0.2.2...0.2.3)
+**Full Changelog**: [0.2.2...0.2.3](https://github.com/hei-templates/hei-synd-thesis/compare/0.2.2...v0.2.3)
 
 ## [0.2.2] - 2025-07-31
 
